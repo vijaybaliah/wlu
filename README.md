@@ -21,3 +21,14 @@ cd wlu
 theme watch
 ```
 
+## Deploying
+
+After pushing your changes to git, run the below command
+
+```
+theme deploy --env=production
+```
+
+## Todo
+
+need to setup automated deployment through deploybot
