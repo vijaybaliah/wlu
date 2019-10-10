@@ -15,10 +15,15 @@ brew install themekit
 cd wlu
 ```
 
-* Copy paste your config.yml and run the following command.
+* Copy paste your config.yml into your local folder and run the following command.
 
 ```
-theme watch
+theme watch --env=development
+```
+
+* To see the preview
+```
+theme open --env=development
 ```
 
 ## Deployment Steps

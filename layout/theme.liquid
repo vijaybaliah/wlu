@@ -84,12 +84,15 @@
 
 <!-- BeginWishyAddon <script>  Shopify.wishy_btn_settings = {"button_setting":"","btn_append":"before","btn_display":"block","btn_width":"auto","btn_margin_top":5,"btn_margin_left":5,"btn_margin_right":5,"btn_margin_bottom":5,"btn_margin_unit":"px","btn_placer_element":null,"btn_background_color":"#ffffff","btn_border_color":"#b9b9b9","btn_border_width":1,"btn_text":"♡ Add to wishlist","btn_color":"#1b1b1b","remove_btn_background_color":"#5c6ac4","remove_btn_border_color":"#3f4eae","remove_btn_border_width":1,"remove_btn_color":"#ffffff","new_theme_published_at":null,"installed":true,"heart_icon_margin_right":15,"heart_icon_margin_bottom":15,"heart_icon_location":"bottom-right","heart_icon_margin_top":15,"heart_icon_margin_left":15,"setting_force_login":false,"heart_icon_url_match":"","heart_icon_enabled":true,"status":null,"spf_record":null,"floating_favorites_enabled":false,"floating_favorites_location":"right","floating_favorites_margin_top":50,"floating_favorites_url_match":"","floating_favorites_background_color":"#ffffff","floating_favorites_border_color":"#b9b9b9","floating_favorites_border_width":1,"floating_favorites_text":"♥ Favorites","floating_favorites_color":"#1b1b1b","heart_icon_type":"default","heart_icon_typedefault_background_color":"#ff8989","heart_icon_typedefault_border_color":"#ff9c9c","heart_icon_typedefault_border_width":2,"heart_icon_typedefault_icon_color":"#ffffff","heart_icon_show_count":true,"heart_icon_typecustom_image_url":"https://cc-swim.herokuapp.com/wishlist.png","btn_text_size":"16.0","locale":null,"shop_star_rating":null,"shop_star_feedback":null,"heart_icon_collection_before_add_color":"#dfdfdf","heart_icon_collection_after_add_color":"#606060","login_link_bg_color":"#5c6ac4","login_link_text_color":"#ffffff","btn_remove_bg_color":"#ffffff","btn_remove_border_color":"#b9b9b9","btn_remove_border_width":1,"btn_remove_text":"♡ Remove from wishlist","btn_remove_color":"#1b1b1b","btn_remove_text_size":"16.0","open_wishlist_after_add_to_wishlist":true,"wishlist_header_text":"My Wishlist","theme_name_from_schema":null,"subscribed_at":null,"wizard_completed_at":null,"plan":"standard","discount":"0.0","launchpoint_wishlist_icon_in_header_enabled":false,"launchpoint_heart_icon_in_collections_enabled":false};  Shopify.wishy_button_css_json = "";  {% if customer %}  Shopify.wishy_customer_email = "{{ customer.email }}" ;  {% else %}  Shopify.wishy_customer_email = "" ;  {% endif %}</script> EndWishyAddon -->
 </head>
- {% include 'back-to-top' %}<!-- Back to Top Buttom -->
+
 {% comment %}
   Add the page template as a class for easy page or template specific styling.
 {% endcomment %}
 <body id="{{ page_title | handle }}" class="{% if customer %}customer-logged-in {% endif %}template-{{ template | replace: '.', ' ' | truncatewords: 1, '' | handle }}">
   {% include 'buddha-megamenu-wireframe' %}
+  <!-- Back to Top Buttom -->
+  {% include 'back-to-top' %}
+  <!-- Back to Top Buttom -->
 {% capture the_snippet_content %}{% include 'socialshopwave-helper' %}{% endcapture %}
             {% unless the_snippet_content contains 'Liquid error' %}
               {{ the_snippet_content }}
