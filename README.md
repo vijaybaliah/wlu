@@ -21,7 +21,7 @@ cd wlu
 theme watch
 ```
 
-## Deploying
+## Deployment Steps
 
 After pushing your changes to git, run the below command
 
