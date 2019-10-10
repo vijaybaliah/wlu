@@ -1,0 +1,1076 @@
+{
+  "current": {
+    "color_body_bg": "#ffffff",
+    "color_headings": "#222323",
+    "color_body_text": "#222323",
+    "color_borders": "#1c1d1d",
+    "color_button_text": "#ffffff",
+    "color_primary": "#1c1d1d",
+    "color_secondary": "#a26b25",
+    "color_product_background": "#f7f7f7",
+    "color_sale_tag": "#990000",
+    "color_input": "#f6f6f6",
+    "color_newsletter": "#f6f6f6",
+    "color_drawer_background": "#1c1d1d",
+    "color_drawer_text": "#ffffff",
+    "color_drawer_border": "#343535",
+    "color_drawer_button": "#a26b25",
+    "color_drawer_button_text": "#ffffff",
+    "type_header_family": "old_standard_tt_n4",
+    "type_header_base_size": "30px",
+    "type_header_border_thickness": "1px",
+    "type_accent_family": "montserrat_n6",
+    "type_accent_transform": false,
+    "type_accent_spacing": true,
+    "type_accent_subheadings": true,
+    "type_base_family": "arapey_n4",
+    "type_base_size": "14px",
+    "type_base_italize_titles": true,
+    "cart_type": "drawer",
+    "cart_notes_enable": false,
+    "share_image": "",
+    "social_facebook_link": "",
+    "social_twitter_link": "",
+    "social_pinterest_link": "",
+    "social_instagram_link": "",
+    "social_snapchat_link": "",
+    "social_google_plus_link": "",
+    "social_tumblr_link": "",
+    "social_youtube_link": "",
+    "social_vimeo_link": "",
+    "social_fancy_link": "",
+    "share_facebook": true,
+    "share_twitter": true,
+    "share_pinterest": true,
+    "favicon": "",
+    "checkout_header_image": "",
+    "checkout_logo_image": "shopify:\/\/shop_images\/ezgif.com-webp-to-png.png",
+    "checkout_logo_position": "left",
+    "checkout_logo_size": "medium",
+    "checkout_body_background_image": "",
+    "checkout_body_background_color": "#fff",
+    "checkout_input_background_color_mode": "white",
+    "checkout_sidebar_background_image": "",
+    "checkout_sidebar_background_color": "#fafafa",
+    "checkout_heading_font": "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'",
+    "checkout_body_font": "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'",
+    "checkout_accent_color": "#a26b25",
+    "checkout_button_color": "#000000",
+    "checkout_error_color": "#e32c2b",
+    "checkout_banner_background_color": "#fff",
+    "checkout_call_to_action_color": "#a26b25",
+    "checkout_use_header_image": false,
+    "collection_products_grid": "collage",
+    "customer_layout": "customer_area",
+    "favicon_enable": false,
+    "product_vendor_enable": false,
+    "social_sharing_style": "clean",
+    "sections": {
+      "header": {
+        "type": "header",
+        "settings": {
+          "logo": "shopify:\/\/shop_images\/ezgif.com-webp-to-png.png",
+          "logo-inverted": "shopify:\/\/shop_images\/ezgif.com-webp-to-png.png",
+          "logo_max_width": "90",
+          "search": "modal",
+          "main_menu_link_list": "main-menu",
+          "drawer_bottom_link_list": "footer",
+          "drawer_search_enable": true,
+          "show_announcement": false,
+          "home_page_only": false,
+          "text": "",
+          "link": "",
+          "color_bg": "#1c1d1d",
+          "color_text": "#ffffff"
+        }
+      },
+      "slideshow": {
+        "type": "slideshow",
+        "blocks": {
+          "slideshow-0": {
+            "type": "slide",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/edited_19a12c21-7ca6-459b-bc41-c97a85bb094a.jpg",
+              "image_position": "center center",
+              "image_overlay": false,
+              "image_overlay_opacity": 28,
+              "text_alignment": "center",
+              "slide_heading": "WomanLikeU",
+              "slide_subheading": "inspired by",
+              "button_label": "GET Started",
+              "button_link": "shopify:\/\/collections\/complete-collection",
+              "slide_text_color": "#ffffff",
+              "slide_button_label_color": "#000000",
+              "slide_button_background_color": "#ffffff"
+            }
+          },
+          "1566983053948": {
+            "type": "slide",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/EDIT.jpg",
+              "image_position": "center center",
+              "image_overlay": true,
+              "image_overlay_opacity": 39,
+              "text_alignment": "center",
+              "slide_heading": "WomanLikeU",
+              "slide_subheading": "Welcome to",
+              "button_label": "Explore",
+              "button_link": "shopify:\/\/collections\/all",
+              "slide_text_color": "#ffffff",
+              "slide_button_label_color": "#030303",
+              "slide_button_background_color": "#ffffff"
+            }
+          }
+        },
+        "block_order": [
+          "slideshow-0",
+          "1566983053948"
+        ],
+        "settings": {
+          "home_hero_height": "adapt",
+          "hero_home_auto": true,
+          "home_hero_auto_speed": 3
+        }
+      },
+      "featured-content": {
+        "type": "featured-content",
+        "disabled": true,
+        "settings": {
+          "home_page_full_width": false,
+          "section_title": "",
+          "text": "",
+          "text_size": "medium"
+        }
+      },
+      "featured-collections": {
+        "type": "featured-collections",
+        "blocks": {
+          "featured-collections-0": {
+            "type": "collection",
+            "settings": {
+              "collection": "casual-collection"
+            }
+          },
+          "featured-collections-2": {
+            "type": "collection",
+            "settings": {
+              "collection": "business-casual"
+            }
+          },
+          "1550294907976": {
+            "type": "collection",
+            "settings": {
+              "collection": "casual"
+            }
+          },
+          "1567077019153": {
+            "type": "collection",
+            "settings": {
+              "collection": "fusion"
+            }
+          },
+          "1550294919963": {
+            "type": "collection",
+            "settings": {
+              "collection": "basics"
+            }
+          }
+        },
+        "block_order": [
+          "featured-collections-0",
+          "featured-collections-2",
+          "1550294907976",
+          "1567077019153",
+          "1550294919963"
+        ],
+        "settings": {
+          "title": "Collections"
+        }
+      },
+      "footer": {
+        "type": "footer",
+        "settings": {
+          "footer_link_list": "footer",
+          "show_payment_icons": true
+        }
+      },
+      "1550432485095": {
+        "type": "advanced-content",
+        "blocks": {
+          "1550432485095-0": {
+            "type": "html",
+            "settings": {
+              "code": "<img style=\"border-radius: 10px; display: block; margin-left: auto; margin-right: auto; width: 25%; height: auto;\" src=\"https:\/\/cdn.shopify.com\/s\/files\/1\/0045\/8850\/3128\/files\/Screenshot_2019-09-23_at_1.40.17_PM.png?3270\">\n\n<h2>Our Motto<\/h2>\n<h2>Be Woman Like You, because you are the best<\/h2>\nWe at WLU firmly believe that every individual and their journey of life is truly inspiring. You all are special and unique, this is the core value we hold and is reflected in everything this team takes up, specially the products that design.\n<br><br>\n\nWe are a small team of individuals who have been at the center of the global fashion landscape throughout their education and career. It was through this rich experience and a common passion for, ‘all things fashion’ that made us realize the need for a ‘Working woman’ centric fashion brand which really delivers to its users, what they are looking for and at times what they are not but should. WLU believes that women’s workwewar is not only about grabbing an ‘off the shelf’ pant suit, it is much more deeper than that. That is why we focus on the individual with regards to body type, nature of work, fashion preferences, product choices, overall personality and many more personal attributes to come up with the most flattering designs and looks for the individual.\n<br><br>\nThe idea is to bring together a smooth and seamless collaboration of design and technology where the intuition of the designer is assisted by the efficiency of technology. We aim to keep on improvising in our mission to curate and analyze as much data as we can and then let our designers and garment engineers do their magic using that. Also, we work directly with manufacturers which helps us get world class quality products to you at accessible prices.\n<br><br>\nSo thanks for making us a part of this journey, we are there through the joy and the blue, you make us proud that we can be associated with WOMAN LIKE YOU!!!\n<br><br>\nZoheib\n<br>\nCo-founder",
+              "width": "100%",
+              "alignment": "center"
+            }
+          }
+        },
+        "block_order": [
+          "1550432485095-0"
+        ],
+        "settings": {}
+      },
+      "1550433979912": {
+        "type": "featured-video",
+        "disabled": true,
+        "settings": {
+          "heading": "Video",
+          "video_url": ""
+        }
+      },
+      "product-template": {
+        "type": "product-template",
+        "settings": {
+          "zoom_enable": true,
+          "social_sharing_products": true,
+          "product_vendor_enable": false,
+          "image_layout": "stacked",
+          "quantity_enabled": true,
+          "product_selector": "select",
+          "enable_payment_button": false,
+          "add_to_cart_button_size": "small"
+        }
+      },
+      "collection-template": {
+        "type": "collection-template",
+        "settings": {
+          "collection_products_grid": "grid",
+          "collection_sort_enable": true,
+          "collection_tags_enable": false,
+          "product_vendor_enable": false
+        }
+      },
+      "list-collections-template": {
+        "type": "list-collections-template",
+        "settings": {
+          "display_type": "all",
+          "sort": "alphabetical"
+        }
+      },
+      "1566982635824": {
+        "type": "featured-collections",
+        "blocks": {
+          "1566982635824-0": {
+            "type": "collection",
+            "settings": {
+              "collection": "hourglass"
+            }
+          },
+          "1566982635824-1": {
+            "type": "collection",
+            "settings": {
+              "collection": "pear"
+            }
+          },
+          "1566982635824-2": {
+            "type": "collection",
+            "settings": {
+              "collection": "oval"
+            }
+          },
+          "1567581530637": {
+            "type": "collection",
+            "settings": {
+              "collection": "straight"
+            }
+          },
+          "1567581552065": {
+            "type": "collection",
+            "settings": {
+              "collection": "heart"
+            }
+          }
+        },
+        "block_order": [
+          "1566982635824-0",
+          "1566982635824-1",
+          "1566982635824-2",
+          "1567581530637",
+          "1567581552065"
+        ],
+        "settings": {
+          "title": "Body Type"
+        }
+      },
+      "page-faq-template": {
+        "type": "page-faq-template",
+        "blocks": {
+          "1568049162477": {
+            "type": "separator",
+            "settings": {
+              "title": "Shopping"
+            }
+          },
+          "1568049174306": {
+            "type": "question",
+            "settings": {
+              "title": "What Is My Account?",
+              "answer": "<p><br>&lsquo;My Account&rsquo; is a one stop for all the information related to your order(s). It gives you the complete control to do the following:<br>Edit your personal information like Name, address, etc.<br>Change password<br>Check your Order Status<br>Access to new deals at a quicker pace<\/p>"
+            }
+          },
+          "1568049264205": {
+            "type": "question",
+            "settings": {
+              "title": "I forgot my password, what do I do?",
+              "answer": "<p>Simply generate a new password by clicking on &ldquo;Forgot Password&rdquo; option at signin\/login page. An email with a link to generate a new password will be sent to your registered email Id.<\/p>"
+            }
+          },
+          "1569131277579": {
+            "type": "question",
+            "settings": {
+              "title": "Is it necessary to have an account to shop on womanlikeu.com?",
+              "answer": "<p>Yes. One needs to register shop on womanlikeu.com.<\/p>"
+            }
+          },
+          "1569131312280": {
+            "type": "question",
+            "settings": {
+              "title": "How do I make a purchase?",
+              "answer": "<p>Shopping on womanlikeu.com is easy. For each item you want to buy, select a size and click on the button \"add to bag\/cart\". As soon as you are done with shopping, you can review your items in your shopping bag\/cart by clicking on \"my shopping bag\/cart\" on the right top corner. If you changed your mind about an item, you can delete it from your shopping bag by clicking on \"delete item\". Click on \"Check Out\" to finish your order.<\/p>"
+            }
+          },
+          "1569131447526": {
+            "type": "question",
+            "settings": {
+              "title": "How do I know what is in stock?",
+              "answer": "<p>All items are in stock unless 'coming soon' or 'sold out' is displayed. Please note that even if an item is in your shopping bag, it can still be bought by another customer until you have completed your order.<\/p>"
+            }
+          },
+          "1569131464998": {
+            "type": "question",
+            "settings": {
+              "title": "Where\/how can I find my size?",
+              "answer": "<p>To find out your size including corresponding measurements, please refer to the Size Chart that is available on every product page. In addition, our customer care team can answer all your questions regarding sizing and fit. Simply <a href=\"\/pages\/contact-us\" title=\"Contact WomanLikeU\">click here<\/a> for advice.<\/p>"
+            }
+          },
+          "1569131526620": {
+            "type": "question",
+            "settings": {
+              "title": "Do you offer gift wrapping facilities?",
+              "answer": "<p>No, we don't offer gift wrapping facilities currently. Nonetheless, we are working on it, and we will have this service soon<\/p>"
+            }
+          },
+          "1569131594278": {
+            "type": "question",
+            "settings": {
+              "title": "I want to gift something to my friend, but I do not want you to send the bill to her. Can you help me on that?",
+              "answer": "<p>No, we can't make any transaction without a bill.<\/p>"
+            }
+          },
+          "1569131623839": {
+            "type": "separator",
+            "settings": {
+              "title": "Orders"
+            }
+          },
+          "1569131636929": {
+            "type": "question",
+            "settings": {
+              "title": "How do I know my order has been confirmed?",
+              "answer": "<p>Once your payment is authorized and your order is completed, you will receive an email from womanlikeu.com confirming the order placement. You would be provided with the order number, details of the order and the amount you have paid. You will also receive an SMS confirming the same.<\/p>\n<p>In the rare instance that any of the items you have ordered are not available, our customer care team will contact you and will refund you the difference.<\/p>"
+            }
+          },
+          "1569131654976": {
+            "type": "question",
+            "settings": {
+              "title": "How can I track the current status of my order?",
+              "answer": "<p>Once your order has been shipped, you will receive a shipping confirmation containing a tracking number and link to the courier. To track your order visit the link and enter the tracking number. With this service you can track your order at any time.<\/p>"
+            }
+          },
+          "1569131685687": {
+            "type": "question",
+            "settings": {
+              "title": "I have placed an order but it does not appear in the 'My Account' section?",
+              "answer": "<p>Do not worry! You might be experiencing some slight delay in the updating of your order details to the &lsquo;My Account' section, for sometimes our systems are flooded with new orders. So please be patient&mdash;Your order details will be automatically updated soon.&nbsp;<\/p>\n<p>Please Note, the items will be visible in 'My Account' for customers registered with WomanLikeU. Customers who have used the guest checkout option are not registered and do not see this option.<\/p>"
+            }
+          },
+          "1569131725479": {
+            "type": "question",
+            "settings": {
+              "title": "Can I add items to an existing order?",
+              "answer": "<p>Unfortunately it is not possible to combine orders or add items to an existing order. You will have to place another order to shop again. For other questions concerning this matter please contact our customer care team by clicking <a href=\"\/pages\/contact-us\" title=\"Contact WomanLikeU\">here<\/a> or writing to us at <a href=\"mailto:hello@womanlikeu.com\">hello@womanlikeu.com<\/a>.<\/p>"
+            }
+          },
+          "1569131802137": {
+            "type": "question",
+            "settings": {
+              "title": "Do I need to sign for my order?",
+              "answer": "<p>We require a signature upon receipt of delivery. Once this occurs, responsibility for your purchased item(s) passes to you. If you are not the receiver of your purchase (for example a gift order) then the person who signs for the package confirms receipt and is accountable for the package.<\/p>"
+            }
+          },
+          "1569131821331": {
+            "type": "separator",
+            "settings": {
+              "title": "Payments"
+            }
+          },
+          "1569131833788": {
+            "type": "question",
+            "settings": {
+              "title": "What payment methods does womanlikeu.com accept?",
+              "answer": "<p>The payment options we support are:<br>Credit Card<br>Debit Card<br>Net Banking<br>Wallets<br>Cash on Delivery (COD)<\/p>\n<p>We process online payments through reputed payment gateways like Razorpay, that provide secure, encrypted connections for all credit card, debit card and Net Banking transactions.<\/p>"
+            }
+          },
+          "1569131853245": {
+            "type": "question",
+            "settings": {
+              "title": "Is it safe to use my credit card on womanlikeu.com?",
+              "answer": "<p>We ensure shopping at womanlikeu.com is as secure as shopping in store. All payments on womanlikeu.com are processed through secure and trusted payment gateways. womanlikeu.com does not store or capture any credit card or net banking related information. Additionally, 3D secure password service is used by banks for online transactions, providing an additional layer of security through identity verification.<\/p>\n<p>&nbsp;So be assured, it is completely safe to use your bank debit\/credit card on our website<\/p>"
+            }
+          },
+          "1569131899893": {
+            "type": "question",
+            "settings": {
+              "title": "Can I make  payments on womanlikeu.com through my mobile?",
+              "answer": "<p>Yes. You can make payment through the mobile site of womanlikeu.com. The mobile site too uses trusted payment gateways that keep your card information secured and protected.<\/p>"
+            }
+          },
+          "1569131931157": {
+            "type": "question",
+            "settings": {
+              "title": "How do I pay for my COD order?",
+              "answer": "<p>You can pay for Cash on Delivery (COD) orders by cash or by Credit\/Debit card if the delivery person is carrying 'card swipe POS machine'.<\/p>"
+            }
+          },
+          "1569131954549": {
+            "type": "question",
+            "settings": {
+              "title": "What should I do if my payment fails?",
+              "answer": "<p>After a successful payment,&nbsp; you will be provided with an authorization code in confirmation. In case, your payment is declined, please retry making the payment after ensuring that the information entered is accurate, including all account details, billing addresses and passwords. Make sure that your internet connection is not disrupted, during the process. If your payment still fails, you can use the Cash on Delivery (COD) payment option.<\/p>\n<p>If your account has been debited after you receive the notification of a payment failure, the normal process is that after a confirmation from the bank, the payment is credited back to your account within 7-10 business days. For further clarification, you could email to our customer care by simply clicking <a href=\"\/pages\/contact-us\" title=\"Contact WomanLikeU\">here<\/a> or writing to us at <a href=\"mailto:hello@womanlikeu.com\">hello@womanlikeu.com<\/a>&nbsp;<\/p>"
+            }
+          },
+          "1569131989275": {
+            "type": "question",
+            "settings": {
+              "title": "Do I have to pay duties and taxes ?",
+              "answer": "<p>Product prices displayed on the website is exclusive of GST. Taxes are applied as per rules and regulations.<\/p>"
+            }
+          },
+          "1568049298623": {
+            "type": "separator",
+            "settings": {
+              "title": "Shipping"
+            }
+          },
+          "1568049728453": {
+            "type": "question",
+            "settings": {
+              "title": "What is WomanLikeU’s Shipping Policy?",
+              "answer": "<p>We strive to deliver products purchased from WomanLikeU in excellent condition and in the fastest time possible. For more details on Shipping policy visit our page on <a href=\"\/policies\/shipping-policy\" title=\"Shipping Policy\">Shipping<\/a><\/p>"
+            }
+          },
+          "1569132116574": {
+            "type": "question",
+            "settings": {
+              "title": "How are orders placed on womanlikeu.com delivered to me?",
+              "answer": "<p>Once the order is placed, we will ship your order through one of our most trusted and reputed Delivery Service Partners. After your order has been shipped, you will get an email and an SMS informing you the details of the Delivery Service Partner and AWB number using which you can track your shipment. Furthermore, you will also receive estimated delivery dates via SMS and email.<\/p>"
+            }
+          },
+          "1569132134544": {
+            "type": "question",
+            "settings": {
+              "title": "What happens if I am not available when you deliver the merchandise?",
+              "answer": "<p>For all our orders our Delivery Service Partner will make three attempts to deliver before the product will be returned to our warehouse. After this it may be re-dispatched as per your request.<\/p>\n<p>In case of Cash on Delivery Order, the Delivery Service Partner normally calls before making delivery attempt. If you are not present when our delivery service provider attempts to deliver the order, three more attempts are made automatically and after that product is returned to our warehouse.<\/p>"
+            }
+          },
+          "1569132157891": {
+            "type": "question",
+            "settings": {
+              "title": "Why did I receive only a part of my order?",
+              "answer": "<p>The reasons why you would have partially received the order are:<br>1. We shipped out your order in two different shipments. One of the items may still be in transit.<br>2. The stock for the remaining items was not available.&nbsp;<\/p>\n<p>You could email to our customer care by simply clicking <a href=\"\/pages\/contact-us\" title=\"Contact WomanLikeU\">here<\/a> or writing to us at <a href=\"mailto:hello@womanlikeu.com\">hello@womanlikeu.com<\/a> &nbsp;to get more clarity on your order status.<\/p>"
+            }
+          },
+          "1569132235867": {
+            "type": "question",
+            "settings": {
+              "title": "Does WomanLikeU deliver products outside India?",
+              "answer": "<p>No. At this point, WomanLikeU delivers products only within India. You can place orders from across the world but delivery addresses are restricted to India<\/p>"
+            }
+          },
+          "1569132252039": {
+            "type": "question",
+            "settings": {
+              "title": "What are the shipping charges?",
+              "answer": "<p>WomanLikeU offers free shipping within India on all products purchased on its website<\/p>"
+            }
+          },
+          "1569132267840": {
+            "type": "question",
+            "settings": {
+              "title": "What is the estimated delivery time?",
+              "answer": "<p>The delivery time varies from cities to cities. Typically it takes 3-7 business days.<br>You could email to our customer care by simply clicking <a href=\"\/pages\/contact-us\" title=\"Contact WomanLikeU\">here<\/a> or writing to us at <a href=\"mailto:hello@womanlikeu.com\">hello@womanlikeu.com<\/a> &nbsp;to know the exact estimated time of delivery.<\/p>"
+            }
+          },
+          "1569132319833": {
+            "type": "question",
+            "settings": {
+              "title": "What happens if my shipment does not get delivered on time?",
+              "answer": "<p>We will do everything possible to have your order delivered to you on time. In case we miss, we suggest you email to our customer care by simply clicking <a href=\"\/pages\/contact-us\" title=\"Contact WomanLikeU\">here<\/a> or writing to us at <a href=\"mailto:hello@womanlikeu.com\">hello@womanlikeu.com<\/a><\/p>"
+            }
+          },
+          "1569132366915": {
+            "type": "question",
+            "settings": {
+              "title": "How can I get my order delivered faster?",
+              "answer": "<p>Sorry, currently we do not have any service available to expedite the order delivery. In future, if we are offering such service and your area pincode is serviceable, you will receive a communication from our end.<\/p>"
+            }
+          },
+          "1569132403823": {
+            "type": "question",
+            "settings": {
+              "title": "Can I change my shipping address?",
+              "answer": "<p>Yes, you can modify the shipping address of your order before we have processed (packed) it. You need to email to our customer care by simply clicking <a href=\"\/pages\/contact-us\" title=\"Contact WomanLikeU\">here<\/a> or writing to us at <a href=\"mailto:hello@womanlikeu.com\">hello@womanlikeu.com<\/a>&nbsp;<\/p>\n<p>We are unable to redirect orders to a different address after shipment. Therefore, please ensure you provide a suitable shipping address for the specified delivery times.<\/p>"
+            }
+          },
+          "1569132434618": {
+            "type": "question",
+            "settings": {
+              "title": "Can one order be delivered to multiple addresses?",
+              "answer": "<p>You can only deliver to one address per order. If your order contains gifts or items that require delivery to multiple locations, you will need to place separate orders for each address.<\/p>"
+            }
+          },
+          "1569132455563": {
+            "type": "question",
+            "settings": {
+              "title": "What should I do if my order is received in a damaged condition or is not what I have ordered?",
+              "answer": "<p>We apologize for this, however, in the rare case you happen to receive a damaged\/defective or a different product from what you had ordered, please notify us immediately by connecting with our customer care by simply clicking <a href=\"\/pages\/contact-us\" title=\"Contact WomanLikeU\">here<\/a> or writing to us at <a href=\"mailto:hello@womanlikeu.com\">hello@womanlikeu.com<\/a> . You can return products purchased from WomanLikeU within 15 days of receiving the product.<\/p>"
+            }
+          },
+          "1569132491259": {
+            "type": "separator",
+            "settings": {
+              "title": "Cancellations"
+            }
+          },
+          "1569132506525": {
+            "type": "question",
+            "settings": {
+              "title": "What is WomanLikeU's Cancellation Policy? How does it work?",
+              "answer": "<p>You can find WomanLikeU&rsquo;s policy on Cancellations <a href=\"\/policies\/refund-policy\" title=\"Refund Policy\">here<\/a>.<\/p>\n<p>You can cancel an order till the same is out for delivery by writing to our customer care by clicking <a href=\"\/pages\/contact-us\" title=\"Contact WomanLikeU\">here<\/a> or writing to us at <a href=\"mailto:hello@womanlikeu.com\">hello@womanlikeu.com<\/a>. This includes items purchased on sale also. Any amount paid will be credited into the same payment mode using which the payment was made.<\/p>\n<p>In case you are unable to cancel the order, you can refuse it at the time of delivery and refund will be processed into the source account, if order amount was paid online.<\/p>"
+            }
+          },
+          "1569132614105": {
+            "type": "question",
+            "settings": {
+              "title": "Why was my order cancelled by WomanLikeU?",
+              "answer": "<p>Though we would love to deliver you your purchase every time you order from us but sometimes due to product failing quality checks at our end we would be forced to cancel your order.<\/p>"
+            }
+          },
+          "1569132626939": {
+            "type": "separator",
+            "settings": {
+              "title": "Exchanges & Returns"
+            }
+          },
+          "1569132644726": {
+            "type": "question",
+            "settings": {
+              "title": "What is WomanLikeU's Return and Exchange Policy? How does it work?",
+              "answer": "<p>You can find WomanLikeU&rsquo;s policy on Returns &amp; Exchanges <a href=\"\/policies\/refund-policy\" title=\"Refund Policy\">here<\/a>.<\/p>"
+            }
+          },
+          "1569132673846": {
+            "type": "question",
+            "settings": {
+              "title": "How can I request a return?",
+              "answer": "<p>In accordance with our return policy, you can make a return request via our <a href=\"https:\/\/docs.google.com\/forms\/d\/1QlTYDR6h3hfkGc5q_a84DQYJEsiyyj5iMXhnnBqR0uE\/edit\">Return &amp; Exchange form<\/a>. Please make sure to mention your email address and order number. Then select the desired return method and indicate the items you wish to return.<\/p>"
+            }
+          },
+          "1569132762716": {
+            "type": "question",
+            "settings": {
+              "title": "How can I send the items back?",
+              "answer": "<p>When filling in the online Return &amp; Exchange form, you can choose to have the items picked-up by our carrier partner or you can indicate that you prefer to self-ship. Pack the items in the original box and close it properly. Items must be returned within 7 days after filling in the online <a href=\"https:\/\/docs.google.com\/forms\/d\/1QlTYDR6h3hfkGc5q_a84DQYJEsiyyj5iMXhnnBqR0uE\/edit\">Return &amp; Exchange form<\/a>.<\/p>"
+            }
+          },
+          "1569132779128": {
+            "type": "question",
+            "settings": {
+              "title": "Why do I need to self-ship?",
+              "answer": "<p>In case your pin code is not serviced by our Delivery Service Partner, you will have to self-ship the product(s) back to us.<\/p>"
+            }
+          },
+          "1569132795304": {
+            "type": "question",
+            "settings": {
+              "title": "Will I receive store credits in case of self-shipped product\/s?",
+              "answer": "<p>For all self-shipped returns, you will be reimbursed INR 100 towards your shipping costs as store credits which can be used for future purchases on our website. The same is subject to your returns being inspected and quality checked on receipt in our warehouse.<\/p>"
+            }
+          },
+          "1569132813256": {
+            "type": "question",
+            "settings": {
+              "title": "Where should I self-ship the Returns?",
+              "answer": "<p>If you choose to self-ship products, kindly address the package to the below mentioned address. Additionally, please mention the invoice number and the number of items you are sending on a paper and keep it inside the package.<\/p>\n<p>WLU Design Technology Pvt. Ltd.<br>House No. A-16\/3<br>DLF Phase 1<br>Gurgaon, Haryana 122002<\/p>"
+            }
+          },
+          "1569132847218": {
+            "type": "question",
+            "settings": {
+              "title": "What is the pick-up process?",
+              "answer": "<p>Once you have initiated the process for a pick-up, our Logistic Service Partner will contact you with the details. Please ensure that the item(s) are properly packed with the return label on top of the packet.<\/p>"
+            }
+          },
+          "1569132868501": {
+            "type": "question",
+            "settings": {
+              "title": "I have created a Return request. When will the product be picked up?",
+              "answer": "<p>Number of days to pickup a product may vary as per the Logistics team that will be assigned to pick up your product. The product will be picked anywhere between 2 &ndash; 7 days. But in case no Logistic Service Partner has contacted you please feel free to email to our customer support team by simply clicking <a href=\"\/pages\/contact-us\" title=\"Contact WomanLikeU\">here<\/a> or writing to us at <a href=\"mailto:hello@womanlikeu.com\">hello@womanlikeu.com<\/a><\/p>"
+            }
+          },
+          "1569132940463": {
+            "type": "question",
+            "settings": {
+              "title": "I have changed my mind and would like to retain the product. What do I do?",
+              "answer": "<p>Please email to our customer support team by simply clicking <a href=\"\/pages\/contact-us\" title=\"Contact WomanLikeU\">here<\/a> or writing to us at <a href=\"mailto:hello@womanlikeu.com\">hello@womanlikeu.com<\/a> in case you want to cancel the return request. If the item is already picked up by the logistic partner, we would not be able to cancel the return.<\/p>"
+            }
+          },
+          "1569132964194": {
+            "type": "question",
+            "settings": {
+              "title": "When do you ship my new exchanged items?",
+              "answer": "<p>As soon as we have received your return, it takes 2-3 working days to deliver your new items. In the unlikely event that the new items would not be available, you will be notified by email and you will be refunded automatically.<\/p>"
+            }
+          },
+          "1569132987706": {
+            "type": "separator",
+            "settings": {
+              "title": "Refunds"
+            }
+          },
+          "1569132998828": {
+            "type": "question",
+            "settings": {
+              "title": "When will I be refunded?",
+              "answer": "<p>If you had selected Cash on Delivery, the refund will be made to the account as provided in the Return &amp; Exchange Form. For other payment modes, refund will be initiated upon successful pickup as per the Returns Policy. Refunds will be processed within 15 days after receiving your returned items. Any amount paid will be credited into the same payment mode using which the payment was made<\/p>"
+            }
+          },
+          "1569133016268": {
+            "type": "question",
+            "settings": {
+              "title": "Will the full amount of my order be refunded?",
+              "answer": "<p>We will refund the total value of the returned items.<\/p>"
+            }
+          },
+          "1569133032212": {
+            "type": "question",
+            "settings": {
+              "title": "How am I refunded for my return if I redeem a voucher?",
+              "answer": "<p>Vouchers can never be exchanged for money. Orders that were (partly) paid for with a voucher, will first be compensated in the form of a new voucher. If any excess remains, the remaining amount will be refunded.<\/p>"
+            }
+          },
+          "1569133047726": {
+            "type": "separator",
+            "settings": {
+              "title": "Miscellaneous"
+            }
+          },
+          "1569133055517": {
+            "type": "question",
+            "settings": {
+              "title": "Is my personal information kept private?",
+              "answer": "<p>The WomanLikeU <a href=\"\/policies\/privacy-policy\" title=\"Privacy Policy\">Privacy Policy<\/a> aims at safe-guarding your confidentiality and privacy. We may collect, store and transfer personal identification information from you in a variety of ways, including, but not limited to, when you visit our Site, register on the Site, place an order, subscribe to the newsletter, respond to a survey, fill out a form, and in connection with other activities, services, features or resources we make available on our Site or our third-party Partners. We may additionally&nbsp; collect information through Cookies or Data files that are placed on your device, Log files or Web beacons, Tags and Pixels. We will only provide third parties the information which they strictly need to carry out their jobs.<\/p>"
+            }
+          },
+          "1569133084241": {
+            "type": "question",
+            "settings": {
+              "title": "How do I unsubscribe from your promotional Emails?",
+              "answer": "<p>Login in to womanlikeu.com, click on &ldquo;My Account&rdquo; and unsubscribe from my profile. Or you can click on the unsubscribe option on the promotional Email.<\/p>"
+            }
+          },
+          "1569133101986": {
+            "type": "question",
+            "settings": {
+              "title": "How do I get in touch with WomanLikeU?",
+              "answer": "<p>Please contact our customer support at 9160345630 10 am to 7 pm (Monday to Saturday) or email by simply clicking <a href=\"\/pages\/contact-us\" title=\"Contact WomanLikeU\">here<\/a> or writing to us at <a href=\"mailto:hello@womanlikeu.com\">hello@womanlikeu.com<\/a>&nbsp;<\/p>"
+            }
+          }
+        },
+        "block_order": [
+          "1568049162477",
+          "1568049174306",
+          "1568049264205",
+          "1569131277579",
+          "1569131312280",
+          "1569131447526",
+          "1569131464998",
+          "1569131526620",
+          "1569131594278",
+          "1569131623839",
+          "1569131636929",
+          "1569131654976",
+          "1569131685687",
+          "1569131725479",
+          "1569131802137",
+          "1569131821331",
+          "1569131833788",
+          "1569131853245",
+          "1569131899893",
+          "1569131931157",
+          "1569131954549",
+          "1569131989275",
+          "1568049298623",
+          "1568049728453",
+          "1569132116574",
+          "1569132134544",
+          "1569132157891",
+          "1569132235867",
+          "1569132252039",
+          "1569132267840",
+          "1569132319833",
+          "1569132366915",
+          "1569132403823",
+          "1569132434618",
+          "1569132455563",
+          "1569132491259",
+          "1569132506525",
+          "1569132614105",
+          "1569132626939",
+          "1569132644726",
+          "1569132673846",
+          "1569132762716",
+          "1569132779128",
+          "1569132795304",
+          "1569132813256",
+          "1569132847218",
+          "1569132868501",
+          "1569132940463",
+          "1569132964194",
+          "1569132987706",
+          "1569132998828",
+          "1569133016268",
+          "1569133032212",
+          "1569133047726",
+          "1569133055517",
+          "1569133084241",
+          "1569133101986"
+        ],
+        "settings": {
+          "expand_questions": false
+        }
+      },
+      "style-quiz": {
+        "type": "style-quiz",
+        "settings": {}
+      },
+      "1570043736818": {
+        "type": "body-type",
+        "settings": {
+          "bodyTypeCalculator": "Unsure of your body type? Try this BODY TYPE"
+        }
+      }
+    },
+    "content_for_index": [
+      "featured-content",
+      "featured-collections",
+      "1566982635824",
+      "1570043736818",
+      "1550433979912",
+      "1550432485095"
+    ]
+  },
+  "presets": {
+    "Classic": {
+      "cart_type": "drawer",
+      "cart_notes_enable": false,
+      "checkout_accent_color": "#a26b25",
+      "checkout_banner_background_color": "#fff",
+      "checkout_button_color": "#000000",
+      "checkout_call_to_action_color": "#a26b25",
+      "checkout_use_header_image": false,
+      "collection_products_grid": "collage",
+      "color_body_bg": "#ffffff",
+      "color_body_text": "#222323",
+      "color_borders": "#1c1d1d",
+      "color_button_text": "#ffffff",
+      "color_drawer_background": "#1c1d1d",
+      "color_drawer_border": "#343535",
+      "color_drawer_button": "#a26b25",
+      "color_drawer_button_text": "#ffffff",
+      "color_drawer_text": "#ffffff",
+      "color_headings": "#222323",
+      "color_input": "#f6f6f6",
+      "color_newsletter": "#f6f6f6",
+      "color_primary": "#1c1d1d",
+      "color_product_background": "#f7f7f7",
+      "color_sale_tag": "#990000",
+      "color_secondary": "#a26b25",
+      "customer_layout": "customer_area",
+      "favicon_enable": false,
+      "product_vendor_enable": false,
+      "share_facebook": true,
+      "share_pinterest": true,
+      "share_twitter": true,
+      "social_sharing_style": "clean",
+      "type_accent_family": "montserrat_n6",
+      "type_accent_spacing": true,
+      "type_accent_transform": true,
+      "type_accent_subheadings": true,
+      "type_base_family": "arapey_n4",
+      "type_base_italize_titles": true,
+      "type_base_size": "16px",
+      "type_header_base_size": "30px",
+      "type_header_border_thickness": "1px",
+      "type_header_family": "old_standard_tt_n4",
+      "sections": {
+        "header": {
+          "type": "header",
+          "settings": {
+            "show_announcement": true,
+            "color_bg": "#1c1d1d",
+            "color_text": "#ffffff"
+          }
+        },
+        "slideshow": {
+          "type": "slideshow",
+          "blocks": {
+            "slideshow-0": {
+              "type": "slide",
+              "settings": {}
+            },
+            "slideshow-1": {
+              "type": "slide",
+              "settings": {}
+            }
+          },
+          "block_order": [
+            "slideshow-0",
+            "slideshow-1"
+          ],
+          "settings": {}
+        },
+        "featured-products": {
+          "type": "featured-products",
+          "settings": {
+            "home_featured_products": "frontpage"
+          }
+        },
+        "featured-content": {
+          "type": "featured-content",
+          "settings": {}
+        },
+        "featured-collections": {
+          "type": "featured-collections",
+          "blocks": {
+            "featured-collections-0": {
+              "type": "collection",
+              "settings": {}
+            },
+            "featured-collections-1": {
+              "type": "collection",
+              "settings": {}
+            },
+            "featured-collections-2": {
+              "type": "collection",
+              "settings": {}
+            }
+          },
+          "block_order": [
+            "featured-collections-0",
+            "featured-collections-1",
+            "featured-collections-2"
+          ],
+          "settings": {}
+        },
+        "newsletter": {
+          "type": "newsletter",
+          "settings": {}
+        }
+      },
+      "content_for_index": [
+        "featured-content",
+        "featured-collections",
+        "featured-products",
+        "newsletter"
+      ]
+    },
+    "Playful": {
+      "color_body_bg": "#ffffff",
+      "color_body_text": "#565656",
+      "color_borders": "#5dd2b4",
+      "color_button_text": "#ffffff",
+      "color_primary": "#7737BD",
+      "color_secondary": "#058677",
+      "color_product_background": "#fff4f6",
+      "color_sale_tag": "#e80970",
+      "color_input": "#f6f6f6",
+      "color_newsletter": "#bde9f2",
+      "color_drawer_background": "#360f5f",
+      "color_drawer_text": "#ffffff",
+      "color_drawer_border": "#50297a",
+      "color_drawer_button": "#7737BD",
+      "color_drawer_button_text": "#ffffff",
+      "color_headings": "#321863",
+      "type_header_family": "quicksand_n7",
+      "type_header_base_size": "38px",
+      "type_header_border_thickness": "1px",
+      "type_accent_family": "roboto_n7",
+      "type_accent_transform": true,
+      "type_accent_spacing": true,
+      "type_accent_subheadings": false,
+      "type_base_family": "helvetica_n4",
+      "type_base_size": "17px",
+      "type_base_italize_titles": false,
+      "cart_type": "drawer",
+      "cart_notes_enable": true,
+      "social_facebook_link": "",
+      "social_twitter_link": "",
+      "social_pinterest_link": "",
+      "social_instagram_link": "",
+      "social_snapchat_link": "",
+      "social_google_plus_link": "",
+      "social_tumblr_link": "",
+      "social_youtube_link": "",
+      "social_vimeo_link": "",
+      "social_fancy_link": "",
+      "share_facebook": true,
+      "share_twitter": true,
+      "share_pinterest": true,
+      "favicon": "",
+      "checkout_header_image": "",
+      "checkout_logo_image": "",
+      "checkout_logo_position": "left",
+      "checkout_logo_size": "small",
+      "checkout_body_background_image": "",
+      "checkout_body_background_color": "#ffffff",
+      "checkout_input_background_color_mode": "white",
+      "checkout_sidebar_background_image": "",
+      "checkout_sidebar_background_color": "#fff4f6",
+      "checkout_heading_font": "Helvetica Neue",
+      "checkout_body_font": "Roboto",
+      "checkout_accent_color": "#7737BD",
+      "checkout_button_color": "#7737BD",
+      "checkout_error_color": "#f01130",
+      "checkout_banner_background_color": "#fff",
+      "checkout_call_to_action_color": "#a26b25",
+      "checkout_use_header_image": false,
+      "collection_products_grid": "collage",
+      "customer_layout": "customer_area",
+      "favicon_enable": false,
+      "product_vendor_enable": false,
+      "social_sharing_style": "clean",
+      "sections": {
+        "slideshow": {
+          "type": "slideshow",
+          "blocks": {
+            "1495823280244": {
+              "type": "slide",
+              "settings": {
+                "slide_text_color": "#ffffff",
+                "slide_button_label_color": "#003B34",
+                "slide_button_background_color": "#84D1B2"
+              }
+            }
+          },
+          "block_order": [
+            "1495823280244"
+          ],
+          "settings": {
+            "hero_home_auto": false,
+            "home_hero_auto_speed": 5
+          }
+        },
+        "featured-products": {
+          "type": "featured-products",
+          "settings": {
+            "home_featured_products": "frontpage",
+            "collection_products_grid": "collage"
+          }
+        },
+        "newsletter": {
+          "type": "newsletter",
+          "settings": {}
+        },
+        "header": {
+          "type": "header",
+          "settings": {
+            "logo_max_width": "260",
+            "search": "modal",
+            "main_menu_link_list": "main-menu",
+            "show_announcement": false,
+            "color_bg": "#290c49",
+            "color_text": "#ffffff"
+          }
+        },
+        "footer": {
+          "type": "footer",
+          "settings": {
+            "footer_link_list": "footer"
+          }
+        },
+        "collection-template": {
+          "type": "collection-template",
+          "settings": {
+            "collection_products_grid": "grid",
+            "collection_tags_enable": false,
+            "product_vendor_enable": false
+          }
+        },
+        "1494860348200": {
+          "type": "featured-row",
+          "settings": {
+            "layout": "right"
+          }
+        },
+        "1494894035034": {
+          "type": "featured-row",
+          "settings": {
+            "layout": "left"
+          }
+        },
+        "product-template": {
+          "type": "product-template",
+          "settings": {
+            "zoom_enable": false,
+            "social_sharing_products": true,
+            "product_vendor_enable": false
+          }
+        },
+        "1496078102297": {
+          "type": "advanced-content",
+          "blocks": {
+            "1496078102297-0": {
+              "type": "html",
+              "settings": {
+                "code": "<div style=\"text-align:center;\">\n<h1 class=\"h1\">Use HTML to format your text so it can be easily read.<\/h1>This text can be used to share information about your brand with customers.<\/div>",
+                "width": "100%",
+                "alignment": "top-middle"
+              }
+            }
+          },
+          "block_order": [
+            "1496078102297-0"
+          ],
+          "settings": {}
+        },
+        "1496177901425": {
+          "type": "advanced-content",
+          "blocks": {
+            "1496177901425-0": {
+              "type": "html",
+              "settings": {
+                "code": "<div style=\"width:745px;text-align: center; margin: 0 auto;\">This text can be used to share information about your brand with customers.<\/div>",
+                "width": "100%",
+                "alignment": "top-middle"
+              }
+            }
+          },
+          "block_order": [
+            "1496177901425-0"
+          ],
+          "settings": {}
+        }
+      },
+      "content_for_index": [
+        "1496177901425",
+        "featured-products",
+        "newsletter",
+        "1496078102297",
+        "1494860348200",
+        "1494894035034"
+      ]
+    }
+  }
+}

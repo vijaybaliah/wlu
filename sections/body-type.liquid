@@ -1,0 +1,248 @@
+{% schema %}
+{
+  "name": "BodyTypeCalculator",
+  "class": "btc",
+  "tag": "section",
+  "settings": [
+    {
+      "id": "bodyTypeCalculator",
+      "type": "text",
+      "label": "Message",
+      "default": "Not aware of your body size don't worry. Use our body type calculator"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Body Type Calculator",
+      "category": "Custom Sections"
+    }
+  ]
+}
+{% endschema %}
+
+{% stylesheet %}
+.btc .body-type-container.close {
+	display: none;
+}
+
+.secondary-button {
+    border: 1px solid;
+    font-size: 16px;
+    text-transform: uppercase;
+    padding: 0.25em 1em;
+}
+
+.btc .body-type-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.25);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10000;
+}
+
+.btc .body-shape-form {
+	width: 100%;
+	background-color: #ffffff;
+}
+
+@media screen and (min-width: 600px) {
+	.btc .body-shape-form {
+		width: 50%;
+	}
+}
+
+.btc .fields {
+	display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    width: 20vw;
+}
+
+.btc .footer {
+	display: flex;
+    justify-content: center;
+    margin: 0 0 16px;
+}
+.btc-content {
+	display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btc-close {
+	display: flex;
+	justify-content: flex-end;
+}
+.btc-title {
+	text-align: center;
+    font-size: 16px;
+    font-weight: bold;
+}
+.bs-result {
+	text-align: center;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.bodyTypeCalculator {
+	text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+}
+{% endstylesheet %}
+{% if section.settings.bodyTypeCalculator != blank %}
+
+  <div class="bodyTypeCalculator">
+  	{{ section.settings.bodyTypeCalculator }}
+    <button class="find-body-type secondary-button">Calculator</button>
+  </div>
+  
+  <div class="body-type-container close">
+    <form class="body-shape-form">
+      <div>
+    	<div class="btc-close">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x">
+            <line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </div>
+        <p class="btc-title">Enter your Sizes in (Inches)</p>
+      </div>
+      <div class="btc-content">
+        <div>
+          <div class="fields">
+            <label htmlfor="bust">Bust</label>
+            <div>
+              <input id="input-bust" type='number' name='bust' value="" />
+              <span class="bust-error"></span>
+            </div>
+          </div>
+          <div class="fields">
+            <label htmlfor="waist">Waist</label>
+            <div>
+              <input id="input-waist" type='number' name='waist' />
+              <span class="waist-error"></span>
+            </div>
+          </div>
+          <div class="fields">
+            <label htmlfor="highHip">High Hip</label>
+            <div>
+              <input id="input-highHip" type='number' name='highHip' />
+              <span class="highHip-error"></span>
+            </div>
+          </div>
+          <div class="fields">
+            <label htmlfor="hips">Hips</label>
+            <div>
+              <input id="input-hips" type='number' name='hips' />
+              <span class="hips-error"></span>
+            </div>
+          </div>
+          <p class="bs-result"></p>
+          <div class="footer">
+            <button type='submit' class="secondary-button">calculate</button>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+{% endif %}
+{% javascript %}
+
+  	document.addEventListener('DOMContentLoaded', loadBodyTypeSection)
+    function loadBodyTypeSection() {
+      const findBSButton = document.querySelector('.find-body-type')
+      findBSButton.addEventListener('click', function() {
+      	const bodyTypeContainer = document.querySelector('.body-type-container')
+        bodyTypeContainer.classList.toggle('close')
+      })
+      const form = document.querySelector('.body-shape-form')
+      form.addEventListener('submit', calcBodySizeSubmit)
+	  const btcClose = document.querySelector('.btc-close')
+	  btcClose.addEventListener('click', closePopup)
+    }
+	function closePopup() {
+      	console.log('close called')
+		const bodyTypeContainer = document.querySelector('.body-type-container')
+        bodyTypeContainer.classList.toggle('close')
+	}
+    function calcBodySizeSubmit(e) {
+      e.preventDefault()
+      clearResult()
+      let validFields = {}
+      const fields = ['bust', 'waist', 'highHip', 'hips']
+      fields.forEach(function(element, index){
+        const input = document.querySelector(`#input-${element}`)
+        const value = parseInt(input.value, 10)
+        const error = validateValues(value)
+        if (error === '') {
+          clearError(element)
+          validFields = Object.assign(validFields, {[element]: value})
+          if (Object.keys(validFields).length === (index + 1)) {
+            calcBodySize(validFields)
+          }
+        } else {
+          printError(element, error)
+          isValid = false
+        }
+      });
+    }
+    function validateValues(value) {
+      if (isNaN(value)) {
+        return 'Value not entered or invalid format'
+      }
+      if (value < 1) {
+        return 'Value can not be negative'
+      }
+      return ''
+    }
+    function calcBodySize(values) {
+      const bust = values.bust
+      const waist = values.waist
+      const highHip = values.highHip
+      const hips = values.hips
+
+      if ((bust - hips) <= 1 && (hips - bust) < 3.6 && (bust - waist) >= 9 || (hips - waist) >= 10) {
+        printResult('Hourglass')
+      }
+      if ((hips - bust) >= 3.6 && (hips - bust) < 10 && (hips - waist) >= 9 && (highHip < 1.193 || waist < 1.193)) {
+        printResult('Bottom hourglass')
+      }
+      if ((bust - hips) > 1 && (bust - hips) < 10 && (bust - waist) >= 9) {
+        printResult('Top hourglass')
+      }
+      if ((hips - bust) > 2 && (hips - waist) >= 7 && (highHip >= 1.193 || waist >= 1.193)) {
+        printResult('Spoon')
+      }
+      if((hips - bust) >= 3.6 && (hips - waist) < 9) {
+        printResult('Triangle')
+      }
+      if ((bust - hips) >= 3.6 && (bust - waist) < 9) {
+        printResult('Inverted triangle')
+      }
+      if ((hips - bust) < 3.6 && (bust - hips) < 3.6 && (bust - waist) < 9 && (hips - waist) < 10) {
+        printResult('Rectangle')
+      }
+    }
+    function clearResult() {
+      const element = document.querySelector('.bs-result')
+      element.innerText = ''
+    }
+    function printResult(result) {
+      const element = document.querySelector('.bs-result')
+      element.innerText = result
+    }
+    function clearError(element) {
+      const errorElement = document.querySelector(`.${element}-error`)
+      errorElement.innerText = ''
+    }
+    function printError(element, error) {
+      const errorElement = document.querySelector(`.${element}-error`)
+      errorElement.innerText = error
+    }
+
+{% endjavascript %}

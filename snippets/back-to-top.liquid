@@ -1,0 +1,80 @@
+{% comment %} 
+  Reduce below value if you need the back to the top button to appear higher up on the page. 
+  That value is in pixels.
+{% endcomment %}
+{% assign vertical_offset_for_trigger = 100 %}
+{% comment %} 
+  Vertical offset from bottom of browser for the position of the button.
+{% endcomment %}
+{% assign position_from_bottom = '25em' %}
+<a href="#" title="Back to the top" class="back-to-top">
+   <i class="fa fa-angle-double-up fa-3x"></i> 
+</a>
+{{ '//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css' | stylesheet_tag }}
+<style>
+.back-to-top {
+  position: fixed;
+  bottom: {{ position_from_bottom }};
+  right: 0px;
+  text-decoration: none;
+  color: #0C0302;
+  background-color: #ffffff;
+  font-size: 15px;
+  padding: 0.3em;
+  display: none;
+  -webkit-border-top-left-radius: 3px;
+  -webkit-border-bottom-left-radius: 3px;
+  -moz-border-radius-topleft: 3px;
+  -moz-border-radius-bottomleft: 3px;
+  border-top-left-radius: 3px;
+  border-bottom-left-radius: 3px;
+  z-index: 6000;
+}
+.back-to-top i {
+  vertical-align: middle;
+}
+.back-to-top span {
+  padding-left: 0.5em;
+}
+.back-to-top i + span {
+  padding-left: 0;
+}
+.back-to-top:hover {
+  text-decoration: none;
+  color: #555;
+}
+</style>
+<script type="text/javascript">
+(function() {
+  document.addEventListener('DOMContentLoaded', loadBackToTop)
+  function loadBackToTop() {
+    var offset = {{ vertical_offset_for_trigger }};
+    var duration = 500;
+    var backToTop = document.querySelector('.back-to-top')
+    window.onscroll = function(e) {
+      if (document.documentElement.scrollTop > offset) {
+        backToTop.style.display = 'block'
+      } else {
+        backToTop.style.display = 'none'
+      }
+    }
+
+    backToTop.addEventListener('click', function(e) {
+      e.preventDefault()
+      scrollTo(document.documentElement, 0, 600)
+    })
+
+    function scrollTo(element, to, duration) {
+      if (duration <= 0) return;
+      var difference = to - element.scrollTop;
+      var perTick = difference / duration * 10;
+
+      setTimeout(function() {
+        element.scrollTop = element.scrollTop + perTick;
+        if (element.scrollTop === to) return;
+        scrollTo(element, to, duration - 10);
+      }, 10);
+    }
+  }
+})()
+</script>

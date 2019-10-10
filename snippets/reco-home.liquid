@@ -1,0 +1,10 @@
+{% paginate collections['business-casual'].products by 12 %}
+
+<div id="gf-products" class="grid-uniform">
+  {% assign grid_item_width = 'medium--one-half large--one-third' %}
+  {% for product in collections['business-casual'].products %}
+      {% include 'product-grid-item'  %}
+  {% endfor %}
+</div>
+{{ paginate | default_pagination }}
+{% endpaginate %}

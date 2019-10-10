@@ -1,0 +1,230 @@
+{% schema %}
+  {
+    "name": "Section name",
+    "settings": []
+  }
+{% endschema %}
+
+{% stylesheet %}
+.style-quiz-container {
+	max-height: 100px;
+}
+.style-img {
+	display: block;
+	width: 100%;
+	margin: auto;
+}
+.style-modal-container {
+	width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    background-color: rgba(0, 0, 0, 0.25);
+    z-index: 10;
+	display: none;
+}
+.style-modal-container.isOpen {
+	display: flex;
+	align-items: center;
+    justify-content: center;
+}
+.style-content {
+	width: 50%;
+	background-color: #ffffff;
+	padding: 16px;
+}
+.style-quiz-img {
+	width: 100%;
+	display: block;
+	margin: auto;
+	max-height: 150px;
+}
+.style-option-selected {
+	border: 2px solid green;
+}
+.style-next-btn {
+	height: 35px;
+    padding: 0 2em;
+    border: 1px solid;
+    font-size: 16px;
+    text-transform: uppercase;
+}
+
+.style-next-btn:disabled {
+	opacity: 0.5;
+    cursor: not-allowed;
+}
+.style-quiz-footer {
+	display: flex;
+	margin: 16px 0;
+    justify-content: flex-end;
+}
+{% endstylesheet %}
+
+<div class="style-quiz-container">
+	<img class="style-img" src="https://picsum.photos/2000/300" />
+</div>
+<div class="style-modal-container">
+</div>
+<script type="text/javascript" defer>
+(function() {
+  	const stylesQuizOptions = {
+		1: [{
+				image: 'https://picsum.photos/200/300',
+				description: 'a0',
+			},
+			{	
+				image: 'https://picsum.photos/200/300',
+				description: 'a1'
+			}],
+		2: [{
+				image: 'https://picsum.photos/200/300',
+				description: 'b0',
+			},
+			{
+				image: 'https://picsum.photos/200/300',
+				description: 'b1'
+			}]
+		
+	}
+// 	window.onload = loadStyleQuiz;
+    document.addEventListener('DOMContentLoaded', loadStyleQuiz)
+	let store
+  	function loadStyleQuiz() {
+      	store = window.createStore(window.app)
+    	const unsubscribe = store.subscribe(function() {
+		const state = store.getState()
+		console.log('state:', state)
+		const choices = state.styleQuiz.choices
+		const currentPage = state.styleQuiz.currentPage
+
+		if (Object.keys(stylesQuizOptions).length === Object.keys(choices).length) {
+			localStorage.setItem('styleQuizChoices', JSON.stringify(choices))
+		}
+		if(choices[currentPage]) {
+			const nextBtn = document.querySelector('.style-next-btn')
+			if (nextBtn) {
+				nextBtn.removeAttribute('disabled')
+			}
+		}
+		
+    })
+		const styleQuizChoices = JSON.parse(localStorage.getItem('styleQuizChoices')) || {}
+		store.dispatch(window.addChoiceAction(styleQuizChoices))
+		store.dispatch(window.actions.setCurrentPageAction({currentPage: '1'}))
+    	const styleQuiz = document.querySelector('.style-quiz-container')
+		styleQuiz.addEventListener('click', function() {
+			const styleModal = document.querySelector('.style-modal-container')
+			openModal(styleModal)
+			generateQuiz(1)
+
+    	})
+
+  	}
+
+  	function openModal(element) {
+    	element.classList.add('isOpen')
+  	}
+
+  	function closeModal(element) {
+  		element.classList.remove('isOpen')
+  	}
+
+	function generateQuiz(current, next='', prev='') {
+		const styleContent = document.createElement('div')
+		styleContent.setAttribute('class', 'style-content')
+		stylesQuizOptions[current].forEach(function(option, index) {
+			
+			const image = createImage(option.image)
+			const descriptionTag = createDescription(option.description)
+			const optiondiv = createOptionDiv(image, descriptionTag, current, index)
+			styleContent.appendChild(optiondiv)
+		})
+		const nextButton = createNextButton(parseInt(current) + 1)
+		const footer = createFooter()
+		footer.appendChild(nextButton)
+		styleContent.appendChild(footer)
+		const styleModalContainer = document.querySelector('.style-modal-container')
+		styleModalContainer.appendChild(styleContent)
+	}
+	
+	function createOptionDiv(image, descriptionTag, current, index) {
+		const optiondiv = document.createElement('div')
+        optiondiv.appendChild(image)
+        optiondiv.appendChild(descriptionTag)
+		optiondiv.setAttribute('class', 'style-options')
+        optiondiv.addEventListener('click', function() {
+            store.dispatch(window.addChoiceAction({[current]: (index + 1 + '')}))
+			removeSelectClass()
+			optiondiv.classList.add('style-option-selected')
+        })
+		const state = store.getState()
+		const choices = state.styleQuiz.choices
+		console.log('index: ', index)
+		console.log('choices: ', choices)
+		if(choices[current] == (index + 1)) {
+			optiondiv.classList.add('style-option-selected')
+		}
+		return optiondiv
+	}
+	
+	function removeSelectClass() {
+		const optionsDiv = document.querySelectorAll('.style-options')
+		optionsDiv.forEach(function(option) {
+			option.classList.remove('style-option-selected')
+		})
+	}
+
+	function createNextButton(nextPage) {
+		const buttonTag = document.createElement('button')
+
+		buttonTag.innerText = 'next'
+		buttonTag.setAttribute('class', 'style-next-btn')
+		const prevState = store.getState()
+		const prevChoices = prevState.styleQuiz.choices
+		if(!prevChoices[nextPage - 1]) {
+			buttonTag.setAttribute('disabled', true)
+		}
+		buttonTag.addEventListener('click', function() {
+			
+			const state = store.getState()
+			const choices = state.styleQuiz.choices
+			if (Object.keys(stylesQuizOptions).length !== Object.keys(choices).length || Object.keys(stylesQuizOptions).length >= nextPage) {
+				generateQuiz(nextPage)
+				const styleContent = document.querySelector('.style-content')
+				styleContent.remove()
+				store.dispatch(window.setCurrentPageAction({currentPage: nextPage}))
+			} else {
+				const styleContent = document.querySelector('.style-content')
+				styleContent.remove()
+				const styleModal = document.querySelector('.style-modal-container')
+				closeModal(styleModal)
+				store.dispatch(window.setCurrentPageAction({currentPage: 1}))
+			}
+			
+		})
+
+		return buttonTag
+	}
+
+	function createFooter() {
+		const div = document.createElement('div')
+		div.classList.add('style-quiz-footer')
+		return div
+	}
+
+	function createImage(src) {
+		const imgTag = document.createElement('img')
+		imgTag.setAttribute('src', src)
+		imgTag.setAttribute('class', 'style-quiz-img')
+		return imgTag
+	}
+
+	function createDescription(description) {
+		const ptag = document.createElement('p')
+		ptag.innerText = description
+		return ptag
+	}
+})()
+</script>

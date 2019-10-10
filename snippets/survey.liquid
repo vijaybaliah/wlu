@@ -1,0 +1,175 @@
+
+<div id="register_pop" class="modal">
+  <div id="customer-fields" {% unless customer %}data-registration="true"{% endunless %}>
+
+  {% form 'create_customer' %}
+
+    {{ form.errors | default_errors }}
+    <input type="hidden" name="shop" value="{{ shop.permanent_domain }}">
+    <!-- progressbar -->
+    <ul id="progressbar-survey">
+      <li class="active">Details</li>
+      <li>Details</li>
+      <li>Details</li>
+      <li>Register</li>
+    </ul>
+    
+    <!-- fieldsets -->
+    <fieldset>
+      <div class="fs-title">Little things to know you better</div>
+      <!-- Custom field with a key called "unicorn" -->
+      <div class="survey-item">
+        <label for="height">Height</label>
+        <input type="text" name="customer[height]" placeholder="5'5''" id="height">
+      </div>
+      <div class="survey-item">
+        <label for="age">Age</label>
+        <input type="text" name="customer[Age]" placeholder="27" id="age">
+      </div>
+      <div class="survey-item">
+        <label for="city">City</label>
+        <input type="text" name="customer[city]" placeholder="Bangalore" id="city">
+      </div>
+      <div class="survey-item"><br />
+        <div>What is the most important attribute you have in mind when choosing attire for work?</div>
+        <div id="survey-group">
+          <div class="survey-radio">
+            <input type="radio" value="Fit" name="customer[body-size]">Fit
+          </div>
+          <div class="survey-radio">
+            <input type="radio" value="Functionality" name="customer[body-size]">Functionality
+          </div>
+          <div class="survey-radio">
+            <input type="radio" value="Aesthetics" name="customer[body-size]">Aesthetics
+          </div>
+          <div class="survey-radio">
+            <input type="radio" value="Comfort" name="customer[body-size]">Comfort
+          </div>
+          <div class="survey-radio">
+            <input type="radio" value="Other" name="customer[body-size]">Other
+          </div>
+        </div>
+      </div>
+      <input type="button" name="next" class="next action-button" value="Next" id="next-btn" style="color: #000000; background-color: #ffffff; margin-top: 1%;float: left;" />
+
+    </fieldset>
+    
+    <fieldset>
+      <div class="fs-title">Little things to know you better2</div>
+      <!-- Custom field with a key called "unicorn" -->
+      <div class="survey-item">
+        <div>What category would your body type fall among below?</div>
+        <img src="//cdn.shopify.com/s/files/1/0045/8850/3128/t/2/assets/bodytypes.png?986" />
+        <div id="survey-group">
+          <div class="survey-radio">
+            <input type="radio" value="Straight" name="customer[body-type]">Straight<br />
+          </div>
+          <div class="survey-radio">
+            <input type="radio" value="Hourglass" name="customer[body-type]">Hourglass<br />
+          </div>
+          <div class="survey-radio">
+            <input type="radio" value="Pear" name="customer[body-type]">Pear<br />
+          </div>
+          <div class="survey-radio">
+            <input type="radio" value="Heart" name="customer[body-type]">Heart<br />
+          </div>
+          <div class="survey-radio">
+            <input type="radio" value="Oval" name="customer[body-type]">Oval<br />
+          </div>
+          <div class="survey-radio">
+          </div>
+        </div>
+      </div>
+      <div class="survey-item"><br />
+        <div>What size fits best to you when you shop from the above mentioned brand?</div>
+        <div id="survey-group">
+          <div class="survey-radio">
+            <input type="checkbox" name="customer[favorite_brand]" value="Zara">Zara<br>
+          </div>
+          <div class="survey-radio">
+            <input type="checkbox" name="customer[favorite_brand]" value="Westside">West side<br>
+          </div>
+          <div class="survey-radio">
+            <input type="checkbox" name="customer[favorite_brand]" value="AND">AND<br>
+          </div>
+          <div class="survey-radio">
+            <input type="checkbox" name="customer[favorite_brand]" value="VanHeusen">VanHeusen<br>
+          </div>
+          <div class="survey-radio">
+            <input type="checkbox" name="customer[favorite_brand]" value="AllenSolly">Allen Solly<br>
+          </div>
+          <div class="survey-radio">
+            <input type="checkbox" name="customer[favorite_brand]" value="MarksnSpencer">Marks and Spencer<br>
+          </div>
+          <div class="survey-radio">
+            <input type="checkbox" name="customer[favorite_brand]" value="HnM">H&M<br>
+          </div>
+          <div class="survey-radio">
+            <input type="checkbox" name="customer[favorite_brand]" value="Forever21">Forever 21<br>
+          </div>
+        </div>
+      </div>
+
+      <input type="button" name="previous" class="previous action-button" value="Previous" style="color: #000000; background-color: #ffffff; margin-top: 1%;float: left;" />
+      <input type="button" name="next" class="next action-button" value="Next" id="next-btn" style="color: #000000; background-color: #ffffff; margin-top: 1%;float: left;" />
+    </fieldset>
+    
+    <fieldset>
+      <div class="fs-title">Little things to know you better3</div>
+      <!-- Custom field with a key called "unicorn" -->
+
+      <div class="survey-item"><br />
+        <div>What size fits best to you when you shop from the above mentioned brand?</div>
+        <div id="survey-group">
+          <div class="survey-radio">
+            <input type="radio" value="XS" name="body-size">XS
+          </div>
+          <div class="survey-radio">
+            <input type="radio" value="S" name="body-size">S
+          </div>
+          <div class="survey-radio">
+            <input type="radio" value="M" name="body-size">M
+          </div>
+          <div class="survey-radio">
+            <input type="radio" value="L" name="body-size">L
+          </div>
+          <div class="survey-radio">
+            <input type="radio" value="XL" name="body-size">XL
+          </div>
+          <div class="survey-radio">
+            <input type="radio" value="XXL" name="body-size">XXL
+          </div>
+        </div>
+      </div>
+      <input type="button" name="previous" class="previous action-button" value="Previous" />
+      <input type="button" name="next" class="next action-button" value="Next" id="next-btn" />
+    </fieldset>
+    
+    
+    <fieldset>
+      <div class="fs-title">Register your account</div>
+      <!-- Custom field with a key called "unicorn" -->
+
+      <label for="FirstName" class="hidden-label">{{ 'customer.register.first_name' | t }}</label>
+      <input type="text" name="customer[first_name]" id="FirstName" class="input-full" placeholder="{{ 'customer.register.first_name' | t }}" {% if form.first_name %}value="{{ form.first_name }}"{% endif %} autocapitalize="words" autofocus>
+
+      <label for="LastName" class="hidden-label">{{ 'customer.register.last_name' | t }}</label>
+      <input type="text" name="customer[last_name]" id="LastName" class="input-full" placeholder="{{ 'customer.register.last_name' | t }}" {% if form.last_name %}value="{{ form.last_name }}"{% endif %} autocapitalize="words">
+
+      <label for="Email" class="hidden-label">{{ 'customer.register.email' | t }}</label>
+      <input type="email" name="customer[email]" id="Email" class="input-full{% if form.errors contains 'email' %} error{% endif %}" placeholder="{{ 'customer.register.email' | t }}" {% if form.email %} value="{{ form.email }}"{% endif %} autocorrect="off" autocapitalize="off">
+
+      <label for="CreatePassword" class="hidden-label">{{ 'customer.register.password' | t }}</label>
+      <input type="password" name="customer[password]" id="CreatePassword" class="input-full{% if form.errors contains 'password' %} error{% endif %}" placeholder="{{ 'customer.register.password' | t }}">
+
+      <input type="button" name="previous" class="previous action-button btn btn--full" value="Previous" style="margin-top: 1%;float: left;" />
+      <p>
+        <input type="submit" value="{{ 'customer.register.submit' | t }}" class="btn btn--full" style="margin-top: 1%;float: left;">
+      </p>
+      <a href="{{ shop.url }}">{{ 'customer.register.cancel' | t }}</a>
+
+    </fieldset>
+    
+  {% endform %}
+  </div>
+</div>

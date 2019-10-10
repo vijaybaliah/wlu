@@ -1,0 +1,181 @@
+  <div class="drawer__inner drawer-left__inner">
+
+    {% if section.settings.drawer_search_enable %}
+      {% include 'search-bar', search_btn_style: 'btn--secondary', search_bar_location: 'search-bar--drawer' %}
+    {% endif %}
+
+    <ul class="mobile-nav">
+      {% for link in linklists[section.settings.main_menu_link_list].links %}
+        {% if link.links != blank %}
+          <li class="mobile-nav__item">
+            <div class="mobile-nav__has-sublist">
+              <a
+                href="{{ link.url }}"
+                class="mobile-nav__link"
+                id="Label-{{ forloop.index }}"
+                {% unless template.name == 'index' %}{% if link.active %}aria-current="page"{% endif %}{% endunless%}>{{ link.title | escape }}</a>
+              <div class="mobile-nav__toggle">
+                <button type="button" class="mobile-nav__toggle-btn icon-fallback-text" aria-controls="Linklist-{{ forloop.index }}" aria-expanded="false">
+                  <span class="icon-fallback-text mobile-nav__toggle-open">
+                    <span class="icon icon-plus" aria-hidden="true"></span>
+                    <span class="fallback-text">{{ 'general.drawers.expand_submenu' | t }} {{ link.title | escape }}</span>
+                  </span>
+                  <span class="icon-fallback-text mobile-nav__toggle-close">
+                    <span class="icon icon-minus" aria-hidden="true"></span>
+                    <span class="fallback-text">{{ 'general.drawers.collapse_submenu' | t }} {{ link.title | escape }}</span>
+                  </span>
+                </button>
+              </div>
+            </div>
+            <ul class="mobile-nav__sublist" id="Linklist-{{ forloop.index }}" aria-labelledby="Label-{{ forloop.index }}" role="navigation">
+              {% assign parent_index = forloop.index %}
+              {% for childlink in link.links %}
+                {% if childlink.links != blank %}
+                <li class="mobile-nav__item">
+                  <div class="mobile-nav__has-sublist">
+                    <a
+                      href="{{ childlink.url }}"
+                      class="mobile-nav__link"
+                      id="Label-{{ parent_index }}-{{ forloop.index }}"
+                      {% unless template.name == 'index' %}{% if link.active %}aria-current="page"{% endif %}{% endunless%}>
+                        {{ childlink.title }}
+                    </a>
+                    <div class="mobile-nav__toggle">
+                      <button type="button" class="mobile-nav__toggle-btn icon-fallback-text" aria-controls="Linklist-{{ parent_index }}-{{ forloop.index }}" aria-expanded="false">
+                        <span class="icon-fallback-text mobile-nav__toggle-open">
+                          <span class="icon icon-plus" aria-hidden="true"></span>
+                          <span class="fallback-text">{{ 'general.drawers.expand_submenu' | t }} {{ link.title | escape }}</span>
+                        </span>
+                        <span class="icon-fallback-text mobile-nav__toggle-close">
+                          <span class="icon icon-minus" aria-hidden="true"></span>
+                          <span class="fallback-text">{{ 'general.drawers.collapse_submenu' | t }} {{ link.title | escape }}</span>
+                        </span>
+                      </button>
+                    </div>
+                  </div>
+                  <ul class="mobile-nav__sublist mobile-nav__subsublist" id="Linklist-{{ parent_index }}-{{ forloop.index }}" aria-labelledby="Label-{{ parent_index }}-{{ forloop.index }}" role="navigation">
+                    {% for grandchildlink in childlink.links %}
+                      <li class="mobile-nav__item">
+                        <a
+                          href="{{ grandchildlink.url }}"
+                          class="mobile-nav__link"
+                          {% unless template.name == 'index' %}{% if grandchildlink.active %}aria-current="page"{% endif %}{% endunless%}>
+                            {{ grandchildlink.title | escape }}
+                        </a>
+                      </li>
+                    {% endfor %}
+                  </ul>
+                </li>
+                {% else %}
+                <li class="mobile-nav__item">
+                  <a
+                    href="{{ childlink.url }}"
+                    class="mobile-nav__link"
+                    {% unless template.name == 'index' %}{% if childlink.active %}aria-current="page"{% endif %}{% endunless%}>
+                      {{ childlink.title | escape }}
+                  </a>
+                </li>
+                {% endif %}
+              {% endfor %}
+            </ul>
+          </li>
+
+          {% else %}
+
+          <li class="mobile-nav__item">
+            <a
+              href="{{ link.url }}"
+              class="mobile-nav__link"
+              {% unless template.name == 'index' %}{% if link.active %}aria-current="page"{% endif %}{% endunless%}>
+                {{ link.title | escape }}
+            </a>
+          </li>
+
+        {% endif %}
+      {% endfor %}
+      {% comment %}
+        Spacer element
+      {% endcomment %}
+      <li class="mobile-nav__spacer"></li>
+
+      {% comment %}
+        If customer accounts are enabled, provide login and create account links
+      {% endcomment %}
+      {% if shop.customer_accounts_enabled %}
+        
+        {% capture the_snippet_auth %}{% include 'socialshopwave-widget-auth' %}{% endcapture %}
+        {% if the_snippet_auth contains 'Liquid error' %}
+{% if customer %}
+          <li class="mobile-nav__item mobile-nav__item--secondary">
+            <a href="/account">{{ 'layout.customer.account' | t }}</a>
+          </li>
+          <li class="mobile-nav__item mobile-nav__item--secondary">
+            {{ 'layout.customer.log_out' | t | customer_logout_link }}
+          </li>
+
+        
+          {% else %}
+          <li class="mobile-nav__item mobile-nav__item--secondary">
+            {{ 'layout.customer.log_in' | t | customer_login_link }}
+          </li>
+          <li class="mobile-nav__item mobile-nav__item--secondary">
+            {{ 'layout.customer.create_account' | t | customer_register_link }}
+          </li>
+        {% endif %}
+        {% else %}
+                <div id="ssw-topauth" class="ssw-topauth">
+                  {% if customer %}
+                  <li class="ssw-tprofile ssw-dropdown mobile-nav__item mobile-nav__item--secondary">
+                    <a class="ssw-dropdown-toggle" data-toggle="ssw-dropdown" href="javascript:void(0);">
+                      {{ customer.first_name }}
+                      {% if customer.last_name != 'Unknown' %}
+                      {{ customer.last_name | slice:0 | upcase }}.
+                      {% endif %}
+                      <i class="ssw-icon-down-open-big"></i>
+                    </a>
+                    <ul class="ssw-dropdown-menu" role="menu" aria-labelledby="dLabel">
+                      <li id="customer_myorders_li"><a tabindex="-1" href="/account">{{ 'socialshopwave.my_orders' | t }}</a></li>
+                      {% include 'ssw-widget-dropdown' %}
+                      <li class="ssw-divider"></li>
+                      <li><a id="customer_logout_link" tabindex="-1" href="/account/logout">{{ 'socialshopwave.logout' | t }}</a></li>
+                    </ul>
+                  </li>
+                  {% else %}
+                  <li class="mobile-nav__item mobile-nav__item--secondary">
+                    <a id="customer_login_link" href="javascript:void(0);" data-toggle="ssw-modal" data-target="#login_modal" onclick="trackShopStats('login_popup_view', 'all')">{{ 'socialshopwave.log_in' | t }}</a>
+                  </li>
+                  <li class="mobile-nav__item mobile-nav__item--secondary">
+                    <a id="customer_register_link" data-toggle="ssw-modal" data-target="#signup_modal" href="javascript:void(0);" onclick="trackShopStats('login_popup_view', 'all')">{{ 'socialshopwave.sign_up' | t }}</a>
+                  </li>
+                  {% endif %}
+                </div>
+        {% endif %}
+        <script>
+          sswRun(function() {
+              var sswLoginIteration = 0
+              var sswLoginInterval = setInterval(function() {
+                  if (ssw('#NavDrawer #customer_login_link').length) {
+                        ssw('#NavDrawer #customer_login_link').click(function() {
+                          ssw('#login_modal').sswModal();
+                        });
+                        ssw('#NavDrawer #customer_register_link').click(function() {
+              ssw('#signup_modal').sswModal();
+                        });
+                      clearInterval(sswLoginInterval)
+          } else if (sswLoginIteration == 10) {
+                      clearInterval(sswLoginInterval);
+                    } else {
+                      sswLoginIteration++
+                    }
+                }, 1000);
+            })
+        </script>
+
+      {% endif %}
+      {% for link in linklists[section.settings.drawer_bottom_link_list].links %}
+        <li class="mobile-nav__item mobile-nav__item--secondary"><a href="{{ link.url }}">{{ link.title }}</a></li>
+      {% endfor %}
+    </ul>
+    <!-- //mobile-nav -->
+  </div>
+
