@@ -212,16 +212,16 @@
   	document.addEventListener('DOMContentLoaded', loadBodyTypeSection)
     function loadBodyTypeSection() {
       const findBSButton = document.querySelector('.find-body-type')
+      const form = document.querySelector('.body-shape-form')
       findBSButton.addEventListener('click', function() {
       	const bodyTypeContainer = document.querySelector('.body-type-container')
         bodyTypeContainer.classList.toggle('close')
+        form.classList.remove('close')
+        clearResult()
       })
-      const form = document.querySelector('.body-shape-form')
-      form.classList.remove('close')
       form.addEventListener('submit', calcBodySizeSubmit)
       const btcClose = document.querySelector('.btc-close')
       btcClose.addEventListener('click', closePopup)
-      clearResult()
     }
 	function closePopup() {
       	console.log('close called')
