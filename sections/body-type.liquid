@@ -289,6 +289,10 @@
     function clearResult() {
       const element = document.querySelector('.bs-result')
       element.classList.add('close')
+      const img = element.children[1]
+      const p = element.children[2]
+      element.removeChild(img)
+      element.removeChild(p)
     }
     function printResult(result) {
       const form = document.querySelector('.body-shape-form')
