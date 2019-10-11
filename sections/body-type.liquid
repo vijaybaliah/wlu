@@ -9,6 +9,36 @@
       "type": "text",
       "label": "Message",
       "default": "Not aware of your body size don't worry. Use our body type calculator"
+    },
+    {
+      "id": "btc_image_hourglass",
+      "type": "text",
+      "label": "hourglass image",
+      "default": "https://picsum.photos/200/300"
+    },
+    {
+      "id": "btc_image_oval",
+      "type": "text",
+      "label": "oval image",
+      "default": "https://picsum.photos/200/300"
+    },
+    {
+      "id": "btc_image_pear",
+      "type": "text",
+      "label": "pear image",
+      "default": "https://picsum.photos/200/300"
+    },
+    {
+      "id": "btc_image_heart",
+      "type": "text",
+      "label": "heart image",
+      "default": "https://picsum.photos/200/300"
+    },
+    {
+      "id": "btc_image_straight",
+      "type": "text",
+      "label": "straight image",
+      "default": "https://picsum.photos/200/300"
     }
   ],
   "presets": [
@@ -21,8 +51,8 @@
 {% endschema %}
 
 {% stylesheet %}
-.btc .body-type-container.close {
-	display: none;
+.btc .close {
+	display: none !important;
 }
 
 .secondary-button {
@@ -76,17 +106,31 @@
 
 .btc-close {
 	display: flex;
-	justify-content: flex-end;
+  justify-content: flex-end;
+  cursor: pointer;
 }
 .btc-title {
 	text-align: center;
     font-size: 16px;
     font-weight: bold;
 }
+
 .bs-result {
-	text-align: center;
-    font-size: 16px;
-    font-weight: bold;
+  background-color: #ffffff;
+  padding: 24px;
+}
+
+.bs-result img {
+  display: block;
+  width: auto;
+  height: 350px;
+  margin: auto;
+}
+
+.bs-result p {
+  text-align: center;
+  font-size: 16px;
+  font-weight: bold;
 }
 
 .bodyTypeCalculator {
@@ -101,11 +145,18 @@
   	{{ section.settings.bodyTypeCalculator }}
     <button class="find-body-type secondary-button">Calculator</button>
   </div>
-  
+  <div class="close result-attr"
+    data-hourglass="{{ section.settings.btc_image_hourglass }}"
+    data-oval="{{ section.settings.btc_image_oval }}"
+    data-pear="{{ section.settings.btc_image_pear }}"
+    data-heart="{{ section.settings.btc_image_hear }}"
+    data-straight="{{ section.settings.btc_image_straight }}"
+  >
+  </div>
   <div class="body-type-container close">
     <form class="body-shape-form">
       <div>
-    	<div class="btc-close">
+    	  <div class="btc-close">
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x">
             <line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line>
           </svg>
@@ -142,17 +193,22 @@
               <span class="hips-error"></span>
             </div>
           </div>
-          <p class="bs-result"></p>
           <div class="footer">
             <button type='submit' class="secondary-button">calculate</button>
           </div>
         </div>
       </div>
     </form>
+    <div class="bs-result close">
+      <div class="btc-close btc-close-result">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x">
+          <line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </div>
+    </div>
   </div>
 {% endif %}
 {% javascript %}
-
   	document.addEventListener('DOMContentLoaded', loadBodyTypeSection)
     function loadBodyTypeSection() {
       const findBSButton = document.querySelector('.find-body-type')
@@ -161,9 +217,11 @@
         bodyTypeContainer.classList.toggle('close')
       })
       const form = document.querySelector('.body-shape-form')
+      form.classList.remove('close')
       form.addEventListener('submit', calcBodySizeSubmit)
-	  const btcClose = document.querySelector('.btc-close')
-	  btcClose.addEventListener('click', closePopup)
+      const btcClose = document.querySelector('.btc-close')
+      btcClose.addEventListener('click', closePopup)
+      clearResult()
     }
 	function closePopup() {
       	console.log('close called')
@@ -172,7 +230,7 @@
 	}
     function calcBodySizeSubmit(e) {
       e.preventDefault()
-      clearResult()
+      
       let validFields = {}
       const fields = ['bust', 'waist', 'highHip', 'hips']
       fields.forEach(function(element, index){
@@ -207,34 +265,46 @@
       const hips = values.hips
 
       if ((bust - hips) <= 1 && (hips - bust) < 3.6 && (bust - waist) >= 9 || (hips - waist) >= 10) {
-        printResult('Hourglass')
+        printResult('hourglass')
       }
       if ((hips - bust) >= 3.6 && (hips - bust) < 10 && (hips - waist) >= 9 && (highHip < 1.193 || waist < 1.193)) {
-        printResult('Bottom hourglass')
+        printResult('hourglass')
       }
       if ((bust - hips) > 1 && (bust - hips) < 10 && (bust - waist) >= 9) {
-        printResult('Top hourglass')
+        printResult('hourglass')
       }
       if ((hips - bust) > 2 && (hips - waist) >= 7 && (highHip >= 1.193 || waist >= 1.193)) {
-        printResult('Spoon')
+        printResult('oval')
       }
       if((hips - bust) >= 3.6 && (hips - waist) < 9) {
-        printResult('Triangle')
+        printResult('pear')
       }
       if ((bust - hips) >= 3.6 && (bust - waist) < 9) {
-        printResult('Inverted triangle')
+        printResult('heart')
       }
       if ((hips - bust) < 3.6 && (bust - hips) < 3.6 && (bust - waist) < 9 && (hips - waist) < 10) {
-        printResult('Rectangle')
+        printResult('straight')
       }
     }
     function clearResult() {
       const element = document.querySelector('.bs-result')
-      element.innerText = ''
+      element.classList.add('close')
     }
     function printResult(result) {
+      const form = document.querySelector('.body-shape-form')
+      form.classList.add('close')
       const element = document.querySelector('.bs-result')
-      element.innerText = result
+      element.classList.remove('close')
+      const image = document.createElement('img')
+      const resultAttr = document.querySelector('.result-attr')
+      const src = resultAttr.getAttribute(`data-${result}`)
+      image.setAttribute('src', src)
+      const pTag = document.createElement('p')
+      pTag.innerText = result
+      element.appendChild(image)
+      element.appendChild(pTag)
+      const btcClose = document.querySelector('.btc-close-result')
+      btcClose.addEventListener('click', closePopup)
     }
     function clearError(element) {
       const errorElement = document.querySelector(`.${element}-error`)
