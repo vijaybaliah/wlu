@@ -1,230 +1,383 @@
 {% schema %}
-  {
-    "name": "Section name",
-    "settings": []
-  }
+{
+  "name": "StyleQuiz",
+  "class": "sq",
+  "tag": "section",
+  "settings": [
+    {
+      "id": "style_quiz_message",
+      "type": "text",
+      "label": "Style Quiz Message",
+      "default": "Take part in our style quiz to get more customized feed"
+    },
+    {
+      "id": "form_personal_info_title",
+      "type": "text",
+      "label": "Pesonal Info Form Title",
+      "default": "Personal Info"
+    },
+    {
+      "id": "form_body_type_title",
+      "type": "text",
+      "label": "Body Type Form Title",
+      "default": "Body Type"
+    },
+    {
+      "id": "straight_img_url",
+      "type": "text",
+      "label": "Straight image url",
+      "default": "https://picsum.photos/200/300"
+    },
+    {
+      "id": "pear_img_url",
+      "type": "text",
+      "label": "Pear image url",
+      "default": "https://picsum.photos/200/300"
+    },
+    {
+      "id": "hourglass_img_url",
+      "type": "text",
+      "label": "Hourglass image url",
+      "default": "https://picsum.photos/200/300"
+    },
+    {
+      "id": "heart_img_url",
+      "type": "text",
+      "label": "Heart image url",
+      "default": "https://picsum.photos/200/300"
+    },
+    {
+      "id": "oval_img_url",
+      "type": "text",
+      "label": "Oval image url",
+      "default": "https://picsum.photos/200/300"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Style Quiz",
+      "category": "Custom Sections"
+    }
+  ]
+}
 {% endschema %}
 
 {% stylesheet %}
-.style-quiz-container {
-	max-height: 100px;
-}
-.style-img {
-	display: block;
-	width: 100%;
-	margin: auto;
-}
-.style-modal-container {
-	width: 100%;
-    height: 100%;
+  .sq-flex {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .sq-container {
     position: fixed;
-    top: 0px;
-    left: 0px;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
     background-color: rgba(0, 0, 0, 0.25);
-    z-index: 10;
-	display: none;
-}
-.style-modal-container.isOpen {
-	display: flex;
-	align-items: center;
+    display: flex;
+    align-items: center;
     justify-content: center;
-}
-.style-content {
-	width: 50%;
-	background-color: #ffffff;
-	padding: 16px;
-}
-.style-quiz-img {
-	width: 100%;
-	display: block;
-	margin: auto;
-	max-height: 150px;
-}
-.style-option-selected {
-	border: 2px solid green;
-}
-.style-next-btn {
-	height: 35px;
-    padding: 0 2em;
-    border: 1px solid;
-    font-size: 16px;
-    text-transform: uppercase;
-}
+    z-index: 10000;
+  }
 
-.style-next-btn:disabled {
-	opacity: 0.5;
-    cursor: not-allowed;
-}
-.style-quiz-footer {
-	display: flex;
-	margin: 16px 0;
+  .sq-container .sq-form-container {
+    width: 100%;
+    background-color: #ffffff;
+    padding: 8px;
+  }
+
+  @media screen and (min-width: 600px) {
+    .sq-container .sq-form-container {
+      width: 50%;
+    }
+  }
+
+  .sq-form-title {
+    padding: 8px;
+  }
+
+  .sq .fields {
+    display: flex;
+    width: 50%;
+    align-items: baseline;
+    margin: 8px;
+  }
+
+  .sq .fields label {
+    margin-right: 8px;
+    min-width: 25%;
+  }
+
+  .sq-submit {
+    display: flex;
     justify-content: flex-end;
-}
-{% endstylesheet %}
+    margin: 8px;
+  }
 
-<div class="style-quiz-container">
+  .sq-submit button {
+    border: 1px solid #000;
+    padding: 0.25em 1em;
+    font-size: 16px;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+
+  .sq-close-popup {
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  .sq-close-button {
+    cursor: pointer;
+  }
+
+  .sq .close {
+    display: none !important;
+  }
+
+  .sq .form-error-message {
+    color: red;
+  }
+
+  .sq-image-body-type {
+    margin: 8px;
+  }
+
+  .sq-bt-label {
+    margin: 0 8px;
+  }
+{% endstylesheet %}
+{% if section.settings.style_quiz_message != blank %}
+  <div class="sq-container">
+    <div class="sq-form-container">
+      <div class="sq-close-popup">
+        {{ 'close.svg' | asset_url | img_tag: 'close button', 'sq-close-button' }}
+      </div>
+      <form id="personal-info">
+        <h3 class="sq-form-title">{{ section.settings.form_personal_info_title }}</h3>
+        <div class="sq-flex">
+          <div class="sq-personal-fields fields">
+            <label for="name">Name</label>
+            <input id="sq-name" name="name" type="text" required />
+          </div>
+          <div class="sq-personal-fields fields">
+            <label for="age">Age</label>
+            <input id="sq-age" name="age" type="number" required />
+          </div>
+        </div>
+        <div class="sq-flex">
+          <div class="sq-personal-fields fields">
+            <label for="height">Height (ft)</label>
+            <input id="sq-height" name="height" type="number" required />
+          </div>
+          <div class="sq-personal-fields fields">
+            <label for="contact">Contact</label>
+            <input id="sq-contact" name="contact" type="text" required />
+          </div>
+        </div>
+        <div class="sq-flex">
+          <div class="sq-personal-fields fields">
+            <label for="email">Email</label>
+            <input id="sq-email" name="email" type="email" required />
+          </div>
+          <div class="sq-personal-fields fields">
+            <label for="city">City</label>
+            <input id="sq-city" name="city" type="text" required />
+          </div>
+        </div>
+        <div class="sq-flex">
+          <div class="sq-personal-fields fields">
+            <label for="officeAddress">Office Address</label>
+            <input id="sq-office-address" name="officeAddress" type="text" required />
+          </div>
+          <div class="sq-personal-fields fields">
+            <label for="designation">Designation</label>
+            <input id="sq-designation" name="designation" type="text" required />
+          </div>
+        </div>
+        <div class="sq-submit">
+          <button type=submit>Next</button>
+        </div>
+      </form>
+      <form id="body-type">
+        <h3 class="sq-form-title">{{ section.settings.form_body_type_title }}</h3>
+        <div class="sq-flex">
+          <div>
+            <div class="sq-image-body-type" for="bodyType">
+              <img src="{{ section.settings.straight_img_url }}"/>
+            </div>
+            <label for="bodyType" class="sq-bt-label">Straight</label>
+            <input type="radio" name="bodyType" />
+          </div>
+          <div>
+            <div class="sq-image-body-type" for="bodyType">
+              <img src="{{ section.settings.pear_img_url }}"/>
+            </div>
+            <label for="bodyType" class="sq-bt-label">Pear</label>
+            <input type="radio" name="bodyType" />
+          </div>
+          <div>
+            <div class="sq-image-body-type" for="bodyType">
+              <img src="{{ section.settings.hourglass_img_url }}"/>
+            </div>
+            <label for="bodyType" class="sq-bt-label">Hour Glass</label>
+            <input type="radio" name="bodyType" />
+          </div>
+        </div>
+        <div class="sq-flex">
+          <div>
+            <div class="sq-image-body-type" for="bodyType">
+              <img src="{{ section.settings.heart_img_url }}"/>
+            </div>
+            <label for="bodyType" class="sq-bt-label">Heart</label>
+            <input type="radio" name="bodyType" />
+          </div>
+          <div>
+            <div class="sq-image-body-type" for="bodyType">
+              <img src="{{ section.settings.oval_img_url }}"/>
+            </div>
+            <label for="bodyType" class="sq-bt-label">Oval</label>
+            <input type="radio" name="bodyType" />
+          </div>
+        </div>
+      </form>
+      <div>
+        <p class="form-error-message close"></p>
+      </div>
+    </div>
+  </div>
+{% endif %}
+<!-- <div class="style-quiz-container">
 	<img class="style-img" src="https://picsum.photos/2000/300" />
 </div>
 <div class="style-modal-container">
-</div>
-<script type="text/javascript" defer>
-(function() {
-  	const stylesQuizOptions = {
-		1: [{
-				image: 'https://picsum.photos/200/300',
-				description: 'a0',
-			},
-			{	
-				image: 'https://picsum.photos/200/300',
-				description: 'a1'
-			}],
-		2: [{
-				image: 'https://picsum.photos/200/300',
-				description: 'b0',
-			},
-			{
-				image: 'https://picsum.photos/200/300',
-				description: 'b1'
-			}]
-		
-	}
-// 	window.onload = loadStyleQuiz;
-    document.addEventListener('DOMContentLoaded', loadStyleQuiz)
-	let store
-  	function loadStyleQuiz() {
-      	store = window.createStore(window.app)
-    	const unsubscribe = store.subscribe(function() {
-		const state = store.getState()
-		console.log('state:', state)
-		const choices = state.styleQuiz.choices
-		const currentPage = state.styleQuiz.currentPage
+</div> -->
+{% javascript %}
+  let result
+  document.addEventListener('DOMContentLoaded', loadStyleQuizSection)
 
-		if (Object.keys(stylesQuizOptions).length === Object.keys(choices).length) {
-			localStorage.setItem('styleQuizChoices', JSON.stringify(choices))
-		}
-		if(choices[currentPage]) {
-			const nextBtn = document.querySelector('.style-next-btn')
-			if (nextBtn) {
-				nextBtn.removeAttribute('disabled')
-			}
-		}
-		
+  function loadStyleQuizSection() {
+    result = {}
+    resetForms()
+    const personalInfoForm = document.querySelector('#personal-info')
+    personalInfoForm.addEventListener('submit', personalInfoFormSubmit)
+  }
+
+  function resetForms() {
+    openForm('#personal-info')
+    closeForm('#body-type')
+  }
+
+  function clearFormErrors() {
+    const error = document.querySelector('.form-error-message')
+    error.innerText = ''
+    error.classList.add('close')
+  }
+
+  function setFormErrors(error) {
+    const errorElement = document.querySelector('.form-error-message')
+    errorElement.innerText = error
+    errorElement.classList.remove('close')
+  }
+  
+  function personalInfoFormSubmit(e) {
+    e.preventDefault()
+    clearFormErrors()
+    const fields = [
+      {
+        id: 'sq-name',
+        type: 'text',
+        name: 'name'
+      },
+      {
+        id: 'sq-age',
+        type: 'number',
+        name: 'age'
+      },
+      {
+        id: 'sq-height',
+        type: 'number',
+        name: 'height'
+      },
+      {
+        id: 'sq-contact',
+        type: 'phone',
+        name: 'contact'
+      },
+      {
+        id: 'sq-email',
+        type: 'email',
+        name: 'email'
+      },
+      {
+        id: 'sq-city',
+        type: 'text',
+        name: 'city'
+      },
+      {
+        id: 'sq-office-address',
+        type: 'text',
+        name: 'officeAddress'
+      },
+      {
+        id: 'sq-designation',
+        type: 'text',
+        name: 'designation'
+      }
+    ]
+
+    fields.forEach(function(field) {
+      const inputField = document.querySelector(`#${field.id}`)
+      let value = ''
+      if (field.type === 'phone' || field.type === 'number') {
+        value = parseInt(inputField.value, 10)
+      } else {
+        value = inputField.value
+      }
+      
+      const error = validateValues(value, field)
+
+      if (error === '') {
+        result[field.name] = value
+        if (Object.keys(result).length === fields.length) {
+          closeForm('#personal-info')
+          openForm('#body-type')
+        }
+      } else {
+        setFormErrors(error)
+      }
     })
-		const styleQuizChoices = JSON.parse(localStorage.getItem('styleQuizChoices')) || {}
-		store.dispatch(window.addChoiceAction(styleQuizChoices))
-		store.dispatch(window.actions.setCurrentPageAction({currentPage: '1'}))
-    	const styleQuiz = document.querySelector('.style-quiz-container')
-		styleQuiz.addEventListener('click', function() {
-			const styleModal = document.querySelector('.style-modal-container')
-			openModal(styleModal)
-			generateQuiz(1)
 
-    	})
+    console.log('result1: ', result)
+  }
 
-  	}
 
-  	function openModal(element) {
-    	element.classList.add('isOpen')
-  	}
+  function validateValues(value, field) {
+    console.log('validate1: ', value)
+    if (isNaN(value) && (field.type === 'phone' || field.type === 'number')) {
+      console.log('field2: ', field)
+      return 'Value not entered or invalid format'
+    } else if (field.type === 'number' && value < 1) {
+      return 'Value can not be negative or zero'
+    } else if (value === '') {
+      return 'Kindly fill all the details'
+    } else if (field.type === 'phone' && (value < 6000000000 || value > 9999999999)) {
+      return 'Invalid phone number'
+    } else {
+      return ''
+    }
+  }
 
-  	function closeModal(element) {
-  		element.classList.remove('isOpen')
-  	}
+  function closeForm(selector) {
+    const element = document.querySelector(selector)
+    element.classList.add('close')
+  }
 
-	function generateQuiz(current, next='', prev='') {
-		const styleContent = document.createElement('div')
-		styleContent.setAttribute('class', 'style-content')
-		stylesQuizOptions[current].forEach(function(option, index) {
-			
-			const image = createImage(option.image)
-			const descriptionTag = createDescription(option.description)
-			const optiondiv = createOptionDiv(image, descriptionTag, current, index)
-			styleContent.appendChild(optiondiv)
-		})
-		const nextButton = createNextButton(parseInt(current) + 1)
-		const footer = createFooter()
-		footer.appendChild(nextButton)
-		styleContent.appendChild(footer)
-		const styleModalContainer = document.querySelector('.style-modal-container')
-		styleModalContainer.appendChild(styleContent)
-	}
-	
-	function createOptionDiv(image, descriptionTag, current, index) {
-		const optiondiv = document.createElement('div')
-        optiondiv.appendChild(image)
-        optiondiv.appendChild(descriptionTag)
-		optiondiv.setAttribute('class', 'style-options')
-        optiondiv.addEventListener('click', function() {
-            store.dispatch(window.addChoiceAction({[current]: (index + 1 + '')}))
-			removeSelectClass()
-			optiondiv.classList.add('style-option-selected')
-        })
-		const state = store.getState()
-		const choices = state.styleQuiz.choices
-		console.log('index: ', index)
-		console.log('choices: ', choices)
-		if(choices[current] == (index + 1)) {
-			optiondiv.classList.add('style-option-selected')
-		}
-		return optiondiv
-	}
-	
-	function removeSelectClass() {
-		const optionsDiv = document.querySelectorAll('.style-options')
-		optionsDiv.forEach(function(option) {
-			option.classList.remove('style-option-selected')
-		})
-	}
+  function openForm(selector) {
+    const element = document.querySelector(selector)
+    console.log('element: ', element)
+    element.classList.remove('close')
+  }
 
-	function createNextButton(nextPage) {
-		const buttonTag = document.createElement('button')
-
-		buttonTag.innerText = 'next'
-		buttonTag.setAttribute('class', 'style-next-btn')
-		const prevState = store.getState()
-		const prevChoices = prevState.styleQuiz.choices
-		if(!prevChoices[nextPage - 1]) {
-			buttonTag.setAttribute('disabled', true)
-		}
-		buttonTag.addEventListener('click', function() {
-			
-			const state = store.getState()
-			const choices = state.styleQuiz.choices
-			if (Object.keys(stylesQuizOptions).length !== Object.keys(choices).length || Object.keys(stylesQuizOptions).length >= nextPage) {
-				generateQuiz(nextPage)
-				const styleContent = document.querySelector('.style-content')
-				styleContent.remove()
-				store.dispatch(window.setCurrentPageAction({currentPage: nextPage}))
-			} else {
-				const styleContent = document.querySelector('.style-content')
-				styleContent.remove()
-				const styleModal = document.querySelector('.style-modal-container')
-				closeModal(styleModal)
-				store.dispatch(window.setCurrentPageAction({currentPage: 1}))
-			}
-			
-		})
-
-		return buttonTag
-	}
-
-	function createFooter() {
-		const div = document.createElement('div')
-		div.classList.add('style-quiz-footer')
-		return div
-	}
-
-	function createImage(src) {
-		const imgTag = document.createElement('img')
-		imgTag.setAttribute('src', src)
-		imgTag.setAttribute('class', 'style-quiz-img')
-		return imgTag
-	}
-
-	function createDescription(description) {
-		const ptag = document.createElement('p')
-		ptag.innerText = description
-		return ptag
-	}
-})()
-</script>
+{% endjavascript %}
