@@ -81,6 +81,12 @@
       "type": "text",
       "label": "Fusion image url",
       "default": "https://picsum.photos/400/200"
+    },
+    {
+      "id": "form_more_info_title",
+      "type": "text",
+      "label": "More info title",
+      "default": "Almost done"
     }
   ],
   "presets": [
@@ -150,7 +156,7 @@
     margin: 8px;
   }
 
-  .sq-submit button {
+  .sq-submit button, .sq-pop-btn {
     border: 1px solid #000;
     padding: 0.25em 1em;
     font-size: 16px;
@@ -196,16 +202,39 @@
   .wws-options span {
     margin-right: 8px;
   }
-  
+
   .wws-image {
     display: block;
     width: 100%;
     height: auto;
     padding: 8px;
   }
+
+  .otherInspirationLabel {
+    margin-right: 8px;
+  }
+
+  .sq-checkbox-labels {
+    margin-right: 16px;
+  }
+
+  .style-quiz-content {
+    display: flex;
+    justify-content: center;
+    align-items: baseline;
+  }
+  .style-quiz-content button {
+    margin-left: 16px;
+  }
 {% endstylesheet %}
 {% if section.settings.style_quiz_message != blank %}
-  <div class="sq-container">
+  <div class="style-quiz-content">
+    <h3>
+      {{ section.settings.style_quiz_message }}
+    </h3>
+    <button class="popup sq-pop-btn"> Click Here</button>
+  </div>
+  <div class="sq-container close">
     <div class="sq-form-container">
       <div class="sq-close-popup">
         {{ 'close.svg' | asset_url | img_tag: 'close button', 'sq-close-button' }}
@@ -413,6 +442,120 @@
           <button type=submit>Next</button>
         </div>
       </form>
+      <form id="more-info">
+        <h3 class="sq-form-title">{{ section.settings.form_more_info_title }}</h3>
+        <div>
+          <p>Where do you usually take inspiration for new purchases?</p>
+          <input type="checkbox" name="inspiration" id="sq-friend" value="friend" />
+          <label for="sq-friend">
+            <span class="sq-checkbox-labels">Friend</span>
+          </label>
+          <input type="checkbox" name="inspiration" id="sq-family" value="family" />
+          <label for="sq-family">
+            <span class="sq-checkbox-labels">Family</span>
+          </label>
+          <input type="checkbox" name="inspiration" id="sq-celebrities" value="celebrities" />
+          <label for="sq-celebrities">
+            <span class="sq-checkbox-labels">Celebrities</span>
+          </label>
+          <input type="checkbox" name="inspiration" id="sq-magazines" value="magazines" />
+          <label for="sq-magazines">
+            <span class="sq-checkbox-labels">Magazines</span>
+          </label>
+          <input type="checkbox" name="inspiration" id="sq-online" value="online" />
+          <label for="sq-online">
+            <span class="sq-checkbox-labels">Online space/blogs</span>
+          </label>
+          <input type="checkbox" name="inspiration" id="sq-tv" value="tv" />
+          <label for="sq-tv">
+            <span class="sq-checkbox-labels">TV Shows & Films</span>
+          </label>
+          <label for="sq-other" class="otherInspirationLabel">
+            <span class="sq-checkbox-labels">Other: </span>
+          </label>
+          <input class="otherInspiration" type="text" name="inspiration" id="sq-other" />
+        </div>
+        <div>
+          <p>Which brands from the below list are you most likely to shop from for clothes you wear to office?</p>
+          <input type="checkbox" name="brand" id="sq-ws" value="west side" />
+          <label for="sq-ws">
+            <span class="sq-checkbox-labels">West Side</span>
+          </label>
+          <input type="checkbox" name="brand" id="sq-zara" value="zara" />
+          <label for="sq-zara">
+            <span class="sq-checkbox-labels">Zara</span>
+          </label>
+          <input type="checkbox" name="brand" id="sq-vanheusen" value="vanheusen" />
+          <label for="sq-vanheusen">
+            <span class="sq-checkbox-labels">VanHeusen</span>
+          </label>
+          <input type="checkbox" name="brand" id="sq-allensolly" value="allensolly" />
+          <label for="sq-allensolly">
+            <span class="sq-checkbox-labels">AllenSolly</span>
+          </label>
+          <input type="checkbox" name="brand" id="sq-marksnspencer" value="marks and spencer" />
+          <label for="sq-marksnspencer">
+            <span class="sq-checkbox-labels">Marks & Spencer</span>
+          </label>
+          <input type="checkbox" name="brand" id="sq-forever21" value="forever21" />
+          <label for="sq-forever21">
+            <span class="sq-checkbox-labels">Forever 21</span>
+          </label>
+          <label for="sq-other" class="otherbrandLabel">
+            <span class="sq-checkbox-labels">Other: </span>
+          </label>
+          <input class="otherbrand" type="text" name="brand" id="sq-other" />
+        </div>
+        <div>
+          <p>What is your nature of work?</p>
+          <input type="radio" name="now" required id="sq-dj" value="desk job" />
+          <label for="sq-dj">
+            <span class="sq-checkbox-labels">Desk Job</span>
+          </label>
+          <input type="radio" name="now" required id="sq-dj2" value="Desk Job with considerable amount of running around" />
+          <label for="sq-dj2">
+            <span class="sq-checkbox-labels">Desk Job with considerable amount of running around</span>
+          </label>
+          <input type="radio" name="now" required id="sq-fj" value="field job" />
+          <label for="sq-fj">
+            <span class="sq-checkbox-labels">Field Job</span>
+          </label>
+          <input type="radio" name="now" required id="sq-cf" value="client facing" />
+          <label for="sq-cf">
+            <span class="sq-checkbox-labels">Client Facing</span>
+          </label>
+        </div>
+        <div>
+          <p>What size fits best to you when you shop from the above mentioned brand?</p>
+          <input type="radio" name="size" required id="sq-xs" value="xs" />
+          <label for="sq-xs">
+            <span class="sq-checkbox-labels">XS</span>
+          </label>
+          <input type="radio" name="size" required id="sq-s" value="s" />
+          <label for="sq-s">
+            <span class="sq-checkbox-labels">S</span>
+          </label>
+          <input type="radio" name="size" required id="sq-m" value="m" />
+          <label for="sq-m">
+            <span class="sq-checkbox-labels">M</span>
+          </label>
+          <input type="radio" name="size" required id="sq-l" value="l" />
+          <label for="sq-l">
+            <span class="sq-checkbox-labels">L</span>
+          </label>
+          <input type="radio" name="size" required id="sq-xl" value="xl" />
+          <label for="sq-xl">
+            <span class="sq-checkbox-labels">XL</span>
+          </label>
+          <input type="radio" name="size" required id="sq-xxl" value="xxl" />
+          <label for="sq-xxl">
+            <span class="sq-checkbox-labels">XXL</span>
+          </label>
+        </div>
+        <div class="sq-submit">
+          <button type=submit>Next</button>
+        </div>
+      </form>
       <div>
         <p class="form-error-message close"></p>
       </div>
@@ -437,6 +580,12 @@
     bodyTypeForm.addEventListener('submit', bodyTypeFormSubmit)
     const workWearStyleForm = document.querySelector('#work-wear-style')
     workWearStyleForm.addEventListener('submit', workWearStyleFormSubmit)
+    const moreInfoForm = document.querySelector('#more-info')
+    moreInfoForm.addEventListener('submit', moreInfoFormSubmit)
+    const popupBtn = document.querySelector('.popup') 
+    popupBtn.addEventListener('click', popUpOpen)
+    const popupCloseBtn = document.querySelector('.sq-close-button')
+    popupCloseBtn.addEventListener('click', popUpClose)
   }
 
   function resetForms() {
@@ -444,6 +593,19 @@
     openForm('#personal-info')
     closeForm('#body-type')
     closeForm('#work-wear-style')
+    closeForm('#more-info')
+  }
+
+  function popUpClose() {
+    resetForms()
+    const popupContainer = document.querySelector('.sq-container')
+    popupContainer.classList.add('close')
+  }
+
+  function popUpOpen() {
+    resetForms()
+    const popupContainer = document.querySelector('.sq-container')
+    popupContainer.classList.remove('close')
   }
 
   function clearFormErrors() {
@@ -577,6 +739,9 @@
     }
   }
 
+  let inspirationObj = {}
+  let brandObj = {}
+
   function workWearStyleFormSubmit(e) {
     e.preventDefault()
     clearFormErrors()
@@ -589,12 +754,75 @@
     const error = validateValues(value)
     if (error === '') {
       result = Object.assign({}, result, value)
-      //openForm('#')
+      openForm('#more-info')
+      
+      const inputInspirations = document.querySelectorAll('input[name="inspiration"]')
+      inputInspirations.forEach(function(inputInspiration) {
+        inputInspiration.onchange = function() {
+          if (inputInspiration.type === 'checkbox') {
+            if (inputInspiration.checked) {
+              inspirationObj[inputInspiration.value] = inputInspiration.value
+            } else {
+              delete inspirationObj[inputInspiration.value]
+            }
+          } else {
+            inspirationObj['other'] = inputInspiration.value
+          }
+        }
+      })
+
+      
+      const inputBrands = document.querySelectorAll('input[name="brand"]')
+      inputBrands.forEach(function(inputBrand) {
+        inputBrand.onchange = function() {
+          if (inputBrand.type === 'checkbox') {
+            if (inputBrand.checked) {
+              brandObj[inputBrand.value] = inputBrand.value
+            } else {
+              delete brandObj[inputBrand.value]
+            }
+          } else {
+            brandObj['other'] = inputBrand.value
+          }
+        }
+      })
       closeForm('#work-wear-style')
     } else {
       setFormErrors(error)
     }
-    console.log('vals: ',value)
   }
 
+  function moreInfoFormSubmit(e) {
+    e.preventDefault()
+    clearFormErrors()
+
+    const form = document.querySelector('#more-info')
+    const data = new FormData(form)
+
+    let value = {}
+    for (const entry of data) {
+      if (entry && (entry[0] === 'now' || entry[0] === 'size')) {
+        value[entry[0]] = entry[1]
+      }
+    }
+    if (Object.values(brandObj).length > 0) {
+      value['brand'] = Object.values(brandObj)
+    }
+
+    if (Object.values(inspirationObj).length > 0) {
+      value['inspiration'] = Object.values(inspirationObj)
+    }
+
+    const error = validateValues(value)
+    if (error === '') {
+      result = Object.assign({}, result, value)
+      closeForm('#more-info')
+      popUpClose()
+    } else {
+      setFormErrors(error)
+    }
+
+    console.log('final: ', result)
+
+  }
 {% endjavascript %}
