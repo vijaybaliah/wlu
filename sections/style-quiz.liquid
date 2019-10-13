@@ -51,6 +51,36 @@
       "type": "text",
       "label": "Oval image url",
       "default": "https://picsum.photos/200/300"
+    },
+    {
+      "id": "form_work_wear_style_title",
+      "type": "text",
+      "label": "Work Wear Style Title",
+      "default": "Choose your work wear style"
+    },
+    {
+      "id": "boardroom_img_url",
+      "type": "text",
+      "label": "Boardroom image url",
+      "default": "https://picsum.photos/400/200"
+    },
+    {
+      "id": "business_casual_img_url",
+      "type": "text",
+      "label": "Business casual image url",
+      "default": "https://picsum.photos/400/200"
+    },
+    {
+      "id": "casual_img_url",
+      "type": "text",
+      "label": "Casual image url",
+      "default": "https://picsum.photos/400/200"
+    },
+    {
+      "id": "fusion_img_url",
+      "type": "text",
+      "label": "Fusion image url",
+      "default": "https://picsum.photos/400/200"
     }
   ],
   "presets": [
@@ -88,6 +118,8 @@
     width: 100%;
     background-color: #ffffff;
     padding: 8px;
+    max-height: 80vh;
+    overflow-y: scroll;
   }
 
   @media screen and (min-width: 600px) {
@@ -150,6 +182,27 @@
   .sq-bt-label {
     margin: 0 8px;
   }
+
+  .sq-bt-btns {
+    display: flex;
+    justify-content: center;
+  }
+
+  .wws-options {
+    display: flex;
+    justify-content: center;
+  }
+
+  .wws-options span {
+    margin-right: 8px;
+  }
+  
+  .wws-image {
+    display: block;
+    width: 100%;
+    height: auto;
+    padding: 8px;
+  }
 {% endstylesheet %}
 {% if section.settings.style_quiz_message != blank %}
   <div class="sq-container">
@@ -207,41 +260,153 @@
         <h3 class="sq-form-title">{{ section.settings.form_body_type_title }}</h3>
         <div class="sq-flex sq-between">
           <div>
-            <div class="sq-image-body-type" for="sq-straight">
-              <img src="{{ section.settings.straight_img_url }}"/>
-            </div>
-            <label for="sq-straight" class="sq-bt-label">Straight</label>
-            <input type="radio" name="bodyType" value="straight" id="sq-straight" />
+            <label for="sq-straight" class="sq-bt-label">
+              <div class="sq-image-body-type">
+                <img src="{{ section.settings.straight_img_url }}"/>
+              </div>
+              <div class="sq-bt-btns">
+                <input required type="radio" name="bodyType" value="straight" id="sq-straight" />
+                <span>Straight</span>
+              </div>
+            </label>
           </div>
           <div>
-            <div class="sq-image-body-type" for="sq-pear">
-              <img src="{{ section.settings.pear_img_url }}"/>
-            </div>
-            <label for="sq-pear" class="sq-bt-label">Pear</label>
-            <input type="radio" name="bodyType" value="pear" id="sq-pear" />
+            <label for="sq-pear" class="sq-bt-label">
+              <div class="sq-image-body-type">
+                <img src="{{ section.settings.pear_img_url }}"/>
+              </div>
+              <div class="sq-bt-btns">
+                <input required type="radio" name="bodyType" value="pear" id="sq-pear" />
+                <span>Pear</span>
+              </div>
+            </label>
           </div>
           <div>
-            <div class="sq-image-body-type" for="sq-hourglass">
-              <img src="{{ section.settings.hourglass_img_url }}"/>
-            </div>
-            <label for="sq-hourglass" class="sq-bt-label">Hour Glass</label>
-            <input type="radio" name="bodyType" value="hourglass" id="sq-hourglass" />
+            <label for="sq-hourglass" class="sq-bt-label">
+              <div class="sq-image-body-type">
+                <img src="{{ section.settings.hourglass_img_url }}"/>
+              </div>
+              <div class="sq-bt-btns">
+                <input required type="radio" name="bodyType" value="hourglass" id="sq-hourglass" />
+                <span>Hour Glass</span>
+              </div>
+            </label>
           </div>
         </div>
         <div class="sq-flex sq-between">
           <div>
-            <div class="sq-image-body-type" for="sq-heart">
-              <img src="{{ section.settings.heart_img_url }}"/>
-            </div>
-            <label for="sq-heart" class="sq-bt-label">Heart</label>
-            <input type="radio" name="bodyType" value="heart" id="sq-heart" />
+            <label for="sq-heart" class="sq-bt-label">
+              <div class="sq-image-body-type">
+                <img src="{{ section.settings.heart_img_url }}"/>
+              </div>
+              <div class="sq-bt-btns">
+                <input required type="radio" name="bodyType" value="heart" id="sq-heart" />
+                <span>Heart</span>
+              </div>
+            </label>       
           </div>
           <div>
-            <div class="sq-image-body-type" for="sq-oval">
-              <img src="{{ section.settings.oval_img_url }}"/>
-            </div>
-            <label for="sq-oval" class="sq-bt-label">Oval</label>
-            <input type="radio" name="bodyType" value="oval" id="sq-oval" />
+            <label for="sq-oval" class="sq-bt-label">
+              <div class="sq-image-body-type" for="sq-oval">
+                <img src="{{ section.settings.oval_img_url }}"/>
+              </div>
+              <div class="sq-bt-btns">
+                <input required type="radio" name="bodyType" value="oval" id="sq-oval" />
+                <span>Oval</span>
+              </div>
+            </label>
+          </div>
+        </div>
+        <div class="sq-submit">
+          <button type=submit>Next</button>
+        </div>
+      </form>
+      <form id="work-wear-style">
+        <h3 class="sq-form-title">{{ section.settings.form_work_wear_style_title }}</h3>
+        <div>         
+          <div>
+            <img class="wws-image" src="{{ section.settings.boardroom_img_url }}" />
+          </div>
+          <div class="wws-options">
+            <label for="wws-boardroom-mo">
+              <input required name="boardroom" type="radio" id="wws-boardroom-mo" value="most often" />
+              <span>Most Often</span>
+            </label>
+            <label for="wws-boardroom-o">
+              <input required name="boardroom" type="radio" id="wws-boardroom-o" value="occasionally" />
+              <span>Occasionally</span>
+            </label>
+            <label for="wws-boardroom-r">
+              <input required name="boardroom" type="radio" id="wws-boardroom-r" value="rarely" />
+              <span>Rarely</span>
+            </label>
+            <label for="wws-boardroom-n">
+              <input required name="boardroom" type="radio" id="wws-boardroom-n" value="never" />
+              <span>Never</span>
+            </label>
+          </div>
+          <div>
+            <img class="wws-image" src="{{ section.settings.business_casual_img_url }}" />
+          </div>
+          <div class="wws-options">
+            <label for="wws-bc-mo">
+              <input required name="businessCasual" type="radio" id="wws-bc-mo" value="most often" />
+              <span>Most Often</span>
+            </label>
+            <label for="wws-bc-o">
+              <input required name="businessCasual" type="radio" id="wws-bc-o" value="occasionally" />
+              <span>Occasionally</span>
+            </label>
+            <label for="wws-bc-r">
+              <input required name="businessCasual" type="radio" id="wws-bc-r" value="rarely" />
+              <span>Rarely</span>
+            </label>
+            <label for="wws-bc-n">
+              <input required name="businessCasual" type="radio" id="wws-bc-n" value="never" />
+              <span>Never</span>
+            </label>
+          </div>
+          <div>
+            <img class="wws-image" src="{{ section.settings.casual_img_url }}" />
+          </div>
+          <div class="wws-options">
+            <label for="wws-casual-mo">
+              <input required name="casual" type="radio" id="wws-casual-mo" value="most often" />
+              <span>Most Often</span>
+            </label>
+            <label for="wws-casual-o">
+              <input required name="casual" type="radio" id="wws-casual-o" value="occasionally" />
+              <span>Occasionally</span>
+            </label>
+            <label for="wws-casual-r">
+              <input required name="casual" type="radio" id="wws-casual-r" value="rarely" />
+              <span>Rarely</span>
+            </label>
+            <label for="wws-casual-n">
+              <input required name="casual" type="radio" id="wws-casual-n" value="never" />
+              <span>Never</span>
+            </label>
+          </div>
+          <div>
+            <img class="wws-image" src="{{ section.settings.fusion_img_url }}" />
+          </div>
+          <div class="wws-options">
+            <label for="wws-fusion-mo">
+              <input required name="fusion" type="radio" id="wws-fusion-mo" value="most often" />
+              <span>Most Often</span>
+            </label>
+            <label for="wws-fusion-o">
+              <input required name="fusion" type="radio" id="wws-fusion-o" value="occasionally" />
+              <span>Occasionally</span>
+            </label>
+            <label for="wws-fusion-r">
+              <input required name="fusion" type="radio" id="wws-fusion-r" value="rarely" />
+              <span>Rarely</span>
+            </label>
+            <label for="wws-fusion-n">
+              <input required name="fusion" type="radio" id="wws-fusion-n" value="never" />
+              <span>Never</span>
+            </label>
           </div>
         </div>
         <div class="sq-submit">
@@ -270,12 +435,15 @@
     personalInfoForm.addEventListener('submit', personalInfoFormSubmit)
     const bodyTypeForm = document.querySelector('#body-type')
     bodyTypeForm.addEventListener('submit', bodyTypeFormSubmit)
+    const workWearStyleForm = document.querySelector('#work-wear-style')
+    workWearStyleForm.addEventListener('submit', workWearStyleFormSubmit)
   }
 
   function resetForms() {
     clearFormErrors()
     openForm('#personal-info')
     closeForm('#body-type')
+    closeForm('#work-wear-style')
   }
 
   function clearFormErrors() {
@@ -402,12 +570,31 @@
     const error = validateValues(value)
     if (error === '') {
       result = Object.assign({}, result, value)
+      openForm('#work-wear-style')
       closeForm('#body-type')
     } else {
       setFormErrors(error)
     }
-    console.log('event: ', e)
-    console.log(e.target)
+  }
+
+  function workWearStyleFormSubmit(e) {
+    e.preventDefault()
+    clearFormErrors()
+    const form = document.querySelector('#work-wear-style')
+    const data = new FormData(form)
+    let value = {}
+    for (const entry of data) {
+      value[entry[0]] = entry[1]
+    }
+    const error = validateValues(value)
+    if (error === '') {
+      result = Object.assign({}, result, value)
+      //openForm('#')
+      closeForm('#work-wear-style')
+    } else {
+      setFormErrors(error)
+    }
+    console.log('vals: ',value)
   }
 
 {% endjavascript %}
