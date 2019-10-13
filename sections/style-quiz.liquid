@@ -1,230 +1,829 @@
 {% schema %}
-  {
-    "name": "Section name",
-    "settings": []
-  }
+{
+  "name": "StyleQuiz",
+  "class": "sq",
+  "tag": "section",
+  "settings": [
+    {
+      "id": "style_quiz_message",
+      "type": "text",
+      "label": "Style Quiz Message",
+      "default": "Take part in our style quiz to get more customized feed"
+    },
+    {
+      "id": "form_personal_info_title",
+      "type": "text",
+      "label": "Pesonal Info Form Title",
+      "default": "Personal Info"
+    },
+    {
+      "id": "form_body_type_title",
+      "type": "text",
+      "label": "Body Type Form Title",
+      "default": "Body Type"
+    },
+    {
+      "id": "straight_img_url",
+      "type": "text",
+      "label": "Straight image url",
+      "default": "https://picsum.photos/200/300"
+    },
+    {
+      "id": "pear_img_url",
+      "type": "text",
+      "label": "Pear image url",
+      "default": "https://picsum.photos/200/300"
+    },
+    {
+      "id": "hourglass_img_url",
+      "type": "text",
+      "label": "Hourglass image url",
+      "default": "https://picsum.photos/200/300"
+    },
+    {
+      "id": "heart_img_url",
+      "type": "text",
+      "label": "Heart image url",
+      "default": "https://picsum.photos/200/300"
+    },
+    {
+      "id": "oval_img_url",
+      "type": "text",
+      "label": "Oval image url",
+      "default": "https://picsum.photos/200/300"
+    },
+    {
+      "id": "form_work_wear_style_title",
+      "type": "text",
+      "label": "Work Wear Style Title",
+      "default": "Choose your work wear style"
+    },
+    {
+      "id": "boardroom_img_url",
+      "type": "text",
+      "label": "Boardroom image url",
+      "default": "https://picsum.photos/400/200"
+    },
+    {
+      "id": "business_casual_img_url",
+      "type": "text",
+      "label": "Business casual image url",
+      "default": "https://picsum.photos/400/200"
+    },
+    {
+      "id": "casual_img_url",
+      "type": "text",
+      "label": "Casual image url",
+      "default": "https://picsum.photos/400/200"
+    },
+    {
+      "id": "fusion_img_url",
+      "type": "text",
+      "label": "Fusion image url",
+      "default": "https://picsum.photos/400/200"
+    },
+    {
+      "id": "form_more_info_title",
+      "type": "text",
+      "label": "More info title",
+      "default": "Almost done"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Style Quiz",
+      "category": "Custom Sections"
+    }
+  ]
+}
 {% endschema %}
 
 {% stylesheet %}
-.style-quiz-container {
-	max-height: 100px;
-}
-.style-img {
-	display: block;
-	width: 100%;
-	margin: auto;
-}
-.style-modal-container {
-	width: 100%;
-    height: 100%;
+  .sq-flex {
+    display: flex;
+  }
+
+  .sq-between {
+    justify-content: space-between;
+  }
+
+  .sq-container {
     position: fixed;
-    top: 0px;
-    left: 0px;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
     background-color: rgba(0, 0, 0, 0.25);
-    z-index: 10;
-	display: none;
-}
-.style-modal-container.isOpen {
-	display: flex;
-	align-items: center;
+    display: flex;
+    align-items: center;
     justify-content: center;
-}
-.style-content {
-	width: 50%;
-	background-color: #ffffff;
-	padding: 16px;
-}
-.style-quiz-img {
-	width: 100%;
-	display: block;
-	margin: auto;
-	max-height: 150px;
-}
-.style-option-selected {
-	border: 2px solid green;
-}
-.style-next-btn {
-	height: 35px;
-    padding: 0 2em;
-    border: 1px solid;
-    font-size: 16px;
-    text-transform: uppercase;
-}
+    z-index: 10000;
+  }
 
-.style-next-btn:disabled {
-	opacity: 0.5;
-    cursor: not-allowed;
-}
-.style-quiz-footer {
-	display: flex;
-	margin: 16px 0;
+  .sq-container .sq-form-container {
+    width: 100%;
+    background-color: #ffffff;
+    padding: 8px;
+    max-height: 80vh;
+    overflow-y: scroll;
+  }
+
+  @media screen and (min-width: 600px) {
+    .sq-container .sq-form-container {
+      width: 50%;
+    }
+  }
+
+  .sq-form-title {
+    padding: 8px;
+  }
+
+  .sq .fields {
+    display: flex;
+    width: 50%;
+    align-items: baseline;
+    margin: 8px;
+  }
+
+  .sq .fields label {
+    margin-right: 8px;
+    min-width: 25%;
+  }
+
+  .sq-submit {
+    display: flex;
     justify-content: flex-end;
-}
-{% endstylesheet %}
+    margin: 8px;
+  }
 
-<div class="style-quiz-container">
+  .sq-submit button, .sq-pop-btn {
+    border: 1px solid #000;
+    padding: 0.25em 1em;
+    font-size: 16px;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+
+  .sq-close-popup {
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  .sq-close-button {
+    cursor: pointer;
+  }
+
+  .sq .close {
+    display: none !important;
+  }
+
+  .sq .form-error-message {
+    color: red;
+  }
+
+  .sq-image-body-type {
+    margin: 8px;
+  }
+
+  .sq-bt-label {
+    margin: 0 8px;
+  }
+
+  .sq-bt-btns {
+    display: flex;
+    justify-content: center;
+  }
+
+  .wws-options {
+    display: flex;
+    justify-content: center;
+  }
+
+  .wws-options span {
+    margin-right: 8px;
+  }
+
+  .wws-image {
+    display: block;
+    width: 100%;
+    height: auto;
+    padding: 8px;
+  }
+
+  .otherInspirationLabel {
+    margin-right: 8px;
+  }
+
+  .sq-checkbox-labels {
+    margin-right: 16px;
+  }
+
+  .style-quiz-content {
+    display: flex;
+    justify-content: center;
+    align-items: baseline;
+    padding: 0 24px;
+  }
+  .style-quiz-content button {
+    margin-left: 16px;
+  }
+{% endstylesheet %}
+{% if section.settings.style_quiz_message != blank %}
+  <div class="style-quiz-content">
+    <h3>
+      {{ section.settings.style_quiz_message }}
+    </h3>
+    <button class="popup sq-pop-btn"> Click Here</button>
+  </div>
+  <div class="sq-container close">
+    <div class="sq-form-container">
+      <div class="sq-close-popup">
+        {{ 'close.svg' | asset_url | img_tag: 'close button', 'sq-close-button' }}
+      </div>
+      <form id="personal-info">
+        <h3 class="sq-form-title">{{ section.settings.form_personal_info_title }}</h3>
+        <div class="sq-flex sq-between">
+          <div class="sq-personal-fields fields">
+            <label for="sq-name">Name</label>
+            <input id="sq-name" name="name" type="text" required />
+          </div>
+          <div class="sq-personal-fields fields">
+            <label for="sq-age">Age</label>
+            <input id="sq-age" name="age" type="number" required />
+          </div>
+        </div>
+        <div class="sq-flex sq-between">
+          <div class="sq-personal-fields fields">
+            <label for="sq-height">Height (ft)</label>
+            <input id="sq-height" name="height" type="number" required />
+          </div>
+          <div class="sq-personal-fields fields">
+            <label for="sq-contact">Contact</label>
+            <input id="sq-contact" name="contact" type="text" required />
+          </div>
+        </div>
+        <div class="sq-flex sq-between">
+          <div class="sq-personal-fields fields">
+            <label for="sq-email">Email</label>
+            <input id="sq-email" name="email" type="email" required />
+          </div>
+          <div class="sq-personal-fields fields">
+            <label for="sq-city">City</label>
+            <input id="sq-city" name="city" type="text" required />
+          </div>
+        </div>
+        <div class="sq-flex sq-between">
+          <div class="sq-personal-fields fields">
+            <label for="sq-office-address">Office Address</label>
+            <input id="sq-office-address" name="officeAddress" type="text" required />
+          </div>
+          <div class="sq-personal-fields fields">
+            <label for="sq-designation">Designation</label>
+            <input id="sq-designation" name="designation" type="text" required />
+          </div>
+        </div>
+        <div class="sq-submit">
+          <button type=submit>Next</button>
+        </div>
+      </form>
+      <form id="body-type">
+        <h3 class="sq-form-title">{{ section.settings.form_body_type_title }}</h3>
+        <div class="sq-flex sq-between">
+          <div>
+            <label for="sq-straight" class="sq-bt-label">
+              <div class="sq-image-body-type">
+                <img src="{{ section.settings.straight_img_url }}"/>
+              </div>
+              <div class="sq-bt-btns">
+                <input required type="radio" name="bodyType" value="straight" id="sq-straight" />
+                <span>Straight</span>
+              </div>
+            </label>
+          </div>
+          <div>
+            <label for="sq-pear" class="sq-bt-label">
+              <div class="sq-image-body-type">
+                <img src="{{ section.settings.pear_img_url }}"/>
+              </div>
+              <div class="sq-bt-btns">
+                <input required type="radio" name="bodyType" value="pear" id="sq-pear" />
+                <span>Pear</span>
+              </div>
+            </label>
+          </div>
+          <div>
+            <label for="sq-hourglass" class="sq-bt-label">
+              <div class="sq-image-body-type">
+                <img src="{{ section.settings.hourglass_img_url }}"/>
+              </div>
+              <div class="sq-bt-btns">
+                <input required type="radio" name="bodyType" value="hourglass" id="sq-hourglass" />
+                <span>Hour Glass</span>
+              </div>
+            </label>
+          </div>
+        </div>
+        <div class="sq-flex sq-between">
+          <div>
+            <label for="sq-heart" class="sq-bt-label">
+              <div class="sq-image-body-type">
+                <img src="{{ section.settings.heart_img_url }}"/>
+              </div>
+              <div class="sq-bt-btns">
+                <input required type="radio" name="bodyType" value="heart" id="sq-heart" />
+                <span>Heart</span>
+              </div>
+            </label>       
+          </div>
+          <div>
+            <label for="sq-oval" class="sq-bt-label">
+              <div class="sq-image-body-type" for="sq-oval">
+                <img src="{{ section.settings.oval_img_url }}"/>
+              </div>
+              <div class="sq-bt-btns">
+                <input required type="radio" name="bodyType" value="oval" id="sq-oval" />
+                <span>Oval</span>
+              </div>
+            </label>
+          </div>
+        </div>
+        <div class="sq-submit">
+          <button type=submit>Next</button>
+        </div>
+      </form>
+      <form id="work-wear-style">
+        <h3 class="sq-form-title">{{ section.settings.form_work_wear_style_title }}</h3>
+        <div>         
+          <div>
+            <img class="wws-image" src="{{ section.settings.boardroom_img_url }}" />
+          </div>
+          <div class="wws-options">
+            <label for="wws-boardroom-mo">
+              <input required name="boardroom" type="radio" id="wws-boardroom-mo" value="most often" />
+              <span>Most Often</span>
+            </label>
+            <label for="wws-boardroom-o">
+              <input required name="boardroom" type="radio" id="wws-boardroom-o" value="occasionally" />
+              <span>Occasionally</span>
+            </label>
+            <label for="wws-boardroom-r">
+              <input required name="boardroom" type="radio" id="wws-boardroom-r" value="rarely" />
+              <span>Rarely</span>
+            </label>
+            <label for="wws-boardroom-n">
+              <input required name="boardroom" type="radio" id="wws-boardroom-n" value="never" />
+              <span>Never</span>
+            </label>
+          </div>
+          <div>
+            <img class="wws-image" src="{{ section.settings.business_casual_img_url }}" />
+          </div>
+          <div class="wws-options">
+            <label for="wws-bc-mo">
+              <input required name="businessCasual" type="radio" id="wws-bc-mo" value="most often" />
+              <span>Most Often</span>
+            </label>
+            <label for="wws-bc-o">
+              <input required name="businessCasual" type="radio" id="wws-bc-o" value="occasionally" />
+              <span>Occasionally</span>
+            </label>
+            <label for="wws-bc-r">
+              <input required name="businessCasual" type="radio" id="wws-bc-r" value="rarely" />
+              <span>Rarely</span>
+            </label>
+            <label for="wws-bc-n">
+              <input required name="businessCasual" type="radio" id="wws-bc-n" value="never" />
+              <span>Never</span>
+            </label>
+          </div>
+          <div>
+            <img class="wws-image" src="{{ section.settings.casual_img_url }}" />
+          </div>
+          <div class="wws-options">
+            <label for="wws-casual-mo">
+              <input required name="casual" type="radio" id="wws-casual-mo" value="most often" />
+              <span>Most Often</span>
+            </label>
+            <label for="wws-casual-o">
+              <input required name="casual" type="radio" id="wws-casual-o" value="occasionally" />
+              <span>Occasionally</span>
+            </label>
+            <label for="wws-casual-r">
+              <input required name="casual" type="radio" id="wws-casual-r" value="rarely" />
+              <span>Rarely</span>
+            </label>
+            <label for="wws-casual-n">
+              <input required name="casual" type="radio" id="wws-casual-n" value="never" />
+              <span>Never</span>
+            </label>
+          </div>
+          <div>
+            <img class="wws-image" src="{{ section.settings.fusion_img_url }}" />
+          </div>
+          <div class="wws-options">
+            <label for="wws-fusion-mo">
+              <input required name="fusion" type="radio" id="wws-fusion-mo" value="most often" />
+              <span>Most Often</span>
+            </label>
+            <label for="wws-fusion-o">
+              <input required name="fusion" type="radio" id="wws-fusion-o" value="occasionally" />
+              <span>Occasionally</span>
+            </label>
+            <label for="wws-fusion-r">
+              <input required name="fusion" type="radio" id="wws-fusion-r" value="rarely" />
+              <span>Rarely</span>
+            </label>
+            <label for="wws-fusion-n">
+              <input required name="fusion" type="radio" id="wws-fusion-n" value="never" />
+              <span>Never</span>
+            </label>
+          </div>
+        </div>
+        <div class="sq-submit">
+          <button type=submit>Next</button>
+        </div>
+      </form>
+      <form id="more-info">
+        <h3 class="sq-form-title">{{ section.settings.form_more_info_title }}</h3>
+        <div>
+          <p>Where do you usually take inspiration for new purchases?</p>
+          <input type="checkbox" name="inspiration" id="sq-friend" value="friend" />
+          <label for="sq-friend">
+            <span class="sq-checkbox-labels">Friend</span>
+          </label>
+          <input type="checkbox" name="inspiration" id="sq-family" value="family" />
+          <label for="sq-family">
+            <span class="sq-checkbox-labels">Family</span>
+          </label>
+          <input type="checkbox" name="inspiration" id="sq-celebrities" value="celebrities" />
+          <label for="sq-celebrities">
+            <span class="sq-checkbox-labels">Celebrities</span>
+          </label>
+          <input type="checkbox" name="inspiration" id="sq-magazines" value="magazines" />
+          <label for="sq-magazines">
+            <span class="sq-checkbox-labels">Magazines</span>
+          </label>
+          <input type="checkbox" name="inspiration" id="sq-online" value="online" />
+          <label for="sq-online">
+            <span class="sq-checkbox-labels">Online space/blogs</span>
+          </label>
+          <input type="checkbox" name="inspiration" id="sq-tv" value="tv" />
+          <label for="sq-tv">
+            <span class="sq-checkbox-labels">TV Shows & Films</span>
+          </label>
+          <label for="sq-other" class="otherInspirationLabel">
+            <span class="sq-checkbox-labels">Other: </span>
+          </label>
+          <input class="otherInspiration" type="text" name="inspiration" id="sq-other" />
+        </div>
+        <div>
+          <p>Which brands from the below list are you most likely to shop from for clothes you wear to office?</p>
+          <input type="checkbox" name="brand" id="sq-ws" value="west side" />
+          <label for="sq-ws">
+            <span class="sq-checkbox-labels">West Side</span>
+          </label>
+          <input type="checkbox" name="brand" id="sq-zara" value="zara" />
+          <label for="sq-zara">
+            <span class="sq-checkbox-labels">Zara</span>
+          </label>
+          <input type="checkbox" name="brand" id="sq-vanheusen" value="vanheusen" />
+          <label for="sq-vanheusen">
+            <span class="sq-checkbox-labels">VanHeusen</span>
+          </label>
+          <input type="checkbox" name="brand" id="sq-allensolly" value="allensolly" />
+          <label for="sq-allensolly">
+            <span class="sq-checkbox-labels">AllenSolly</span>
+          </label>
+          <input type="checkbox" name="brand" id="sq-marksnspencer" value="marks and spencer" />
+          <label for="sq-marksnspencer">
+            <span class="sq-checkbox-labels">Marks & Spencer</span>
+          </label>
+          <input type="checkbox" name="brand" id="sq-forever21" value="forever21" />
+          <label for="sq-forever21">
+            <span class="sq-checkbox-labels">Forever 21</span>
+          </label>
+          <label for="sq-other" class="otherbrandLabel">
+            <span class="sq-checkbox-labels">Other: </span>
+          </label>
+          <input class="otherbrand" type="text" name="brand" id="sq-other" />
+        </div>
+        <div>
+          <p>What is your nature of work?</p>
+          <input type="radio" name="now" required id="sq-dj" value="desk job" />
+          <label for="sq-dj">
+            <span class="sq-checkbox-labels">Desk Job</span>
+          </label>
+          <input type="radio" name="now" required id="sq-dj2" value="Desk Job with considerable amount of running around" />
+          <label for="sq-dj2">
+            <span class="sq-checkbox-labels">Desk Job with considerable amount of running around</span>
+          </label>
+          <input type="radio" name="now" required id="sq-fj" value="field job" />
+          <label for="sq-fj">
+            <span class="sq-checkbox-labels">Field Job</span>
+          </label>
+          <input type="radio" name="now" required id="sq-cf" value="client facing" />
+          <label for="sq-cf">
+            <span class="sq-checkbox-labels">Client Facing</span>
+          </label>
+        </div>
+        <div>
+          <p>What size fits best to you when you shop from the above mentioned brand?</p>
+          <input type="radio" name="size" required id="sq-xs" value="xs" />
+          <label for="sq-xs">
+            <span class="sq-checkbox-labels">XS</span>
+          </label>
+          <input type="radio" name="size" required id="sq-s" value="s" />
+          <label for="sq-s">
+            <span class="sq-checkbox-labels">S</span>
+          </label>
+          <input type="radio" name="size" required id="sq-m" value="m" />
+          <label for="sq-m">
+            <span class="sq-checkbox-labels">M</span>
+          </label>
+          <input type="radio" name="size" required id="sq-l" value="l" />
+          <label for="sq-l">
+            <span class="sq-checkbox-labels">L</span>
+          </label>
+          <input type="radio" name="size" required id="sq-xl" value="xl" />
+          <label for="sq-xl">
+            <span class="sq-checkbox-labels">XL</span>
+          </label>
+          <input type="radio" name="size" required id="sq-xxl" value="xxl" />
+          <label for="sq-xxl">
+            <span class="sq-checkbox-labels">XXL</span>
+          </label>
+        </div>
+        <div class="sq-submit">
+          <button type=submit>Next</button>
+        </div>
+      </form>
+      <div>
+        <p class="form-error-message close"></p>
+      </div>
+    </div>
+  </div>
+{% endif %}
+<!-- <div class="style-quiz-container">
 	<img class="style-img" src="https://picsum.photos/2000/300" />
 </div>
 <div class="style-modal-container">
-</div>
-<script type="text/javascript" defer>
-(function() {
-  	const stylesQuizOptions = {
-		1: [{
-				image: 'https://picsum.photos/200/300',
-				description: 'a0',
-			},
-			{	
-				image: 'https://picsum.photos/200/300',
-				description: 'a1'
-			}],
-		2: [{
-				image: 'https://picsum.photos/200/300',
-				description: 'b0',
-			},
-			{
-				image: 'https://picsum.photos/200/300',
-				description: 'b1'
-			}]
-		
-	}
-// 	window.onload = loadStyleQuiz;
-    document.addEventListener('DOMContentLoaded', loadStyleQuiz)
-	let store
-  	function loadStyleQuiz() {
-      	store = window.createStore(window.app)
-    	const unsubscribe = store.subscribe(function() {
-		const state = store.getState()
-		console.log('state:', state)
-		const choices = state.styleQuiz.choices
-		const currentPage = state.styleQuiz.currentPage
+</div> -->
+{% javascript %}
+  let result
+  document.addEventListener('DOMContentLoaded', loadStyleQuizSection)
 
-		if (Object.keys(stylesQuizOptions).length === Object.keys(choices).length) {
-			localStorage.setItem('styleQuizChoices', JSON.stringify(choices))
-		}
-		if(choices[currentPage]) {
-			const nextBtn = document.querySelector('.style-next-btn')
-			if (nextBtn) {
-				nextBtn.removeAttribute('disabled')
-			}
-		}
-		
+  function loadStyleQuizSection() {
+    result = {}
+    resetForms()
+    const personalInfoForm = document.querySelector('#personal-info')
+    personalInfoForm.addEventListener('submit', personalInfoFormSubmit)
+    const bodyTypeForm = document.querySelector('#body-type')
+    bodyTypeForm.addEventListener('submit', bodyTypeFormSubmit)
+    const workWearStyleForm = document.querySelector('#work-wear-style')
+    workWearStyleForm.addEventListener('submit', workWearStyleFormSubmit)
+    const moreInfoForm = document.querySelector('#more-info')
+    moreInfoForm.addEventListener('submit', moreInfoFormSubmit)
+    const popupBtn = document.querySelector('.popup') 
+    popupBtn.addEventListener('click', popUpOpen)
+    const popupCloseBtn = document.querySelector('.sq-close-button')
+    popupCloseBtn.addEventListener('click', popUpClose)
+  }
+
+  function resetForms() {
+    clearFormErrors()
+    openForm('#personal-info')
+    closeForm('#body-type')
+    closeForm('#work-wear-style')
+    closeForm('#more-info')
+  }
+
+  function popUpClose() {
+    resetForms()
+    const popupContainer = document.querySelector('.sq-container')
+    popupContainer.classList.add('close')
+  }
+
+  function popUpOpen() {
+    resetForms()
+    const popupContainer = document.querySelector('.sq-container')
+    popupContainer.classList.remove('close')
+  }
+
+  function clearFormErrors() {
+    const error = document.querySelector('.form-error-message')
+    error.innerText = ''
+    error.classList.add('close')
+  }
+
+  function setFormErrors(error) {
+    const errorElement = document.querySelector('.form-error-message')
+    errorElement.innerText = error
+    errorElement.classList.remove('close')
+  }
+  
+  function personalInfoFormSubmit(e) {
+    e.preventDefault()
+    clearFormErrors()
+    const fields = [
+      {
+        id: 'sq-name',
+        type: 'text',
+        name: 'name'
+      },
+      {
+        id: 'sq-age',
+        type: 'number',
+        name: 'age'
+      },
+      {
+        id: 'sq-height',
+        type: 'number',
+        name: 'height'
+      },
+      {
+        id: 'sq-contact',
+        type: 'phone',
+        name: 'contact'
+      },
+      {
+        id: 'sq-email',
+        type: 'email',
+        name: 'email'
+      },
+      {
+        id: 'sq-city',
+        type: 'text',
+        name: 'city'
+      },
+      {
+        id: 'sq-office-address',
+        type: 'text',
+        name: 'officeAddress'
+      },
+      {
+        id: 'sq-designation',
+        type: 'text',
+        name: 'designation'
+      }
+    ]
+
+    fields.forEach(function(field) {
+      const inputField = document.querySelector(`#${field.id}`)
+      let value = ''
+      if (field.type === 'phone' || field.type === 'number') {
+        value = parseInt(inputField.value, 10)
+      } else {
+        value = inputField.value
+      }
+      
+      const error = validateValues(value, field)
+
+      if (error === '') {
+        result[field.name] = value
+        if (Object.keys(result).length === fields.length) {
+          closeForm('#personal-info')
+          openForm('#body-type')
+        }
+      } else {
+        setFormErrors(error)
+      }
     })
-		const styleQuizChoices = JSON.parse(localStorage.getItem('styleQuizChoices')) || {}
-		store.dispatch(window.addChoiceAction(styleQuizChoices))
-		store.dispatch(window.actions.setCurrentPageAction({currentPage: '1'}))
-    	const styleQuiz = document.querySelector('.style-quiz-container')
-		styleQuiz.addEventListener('click', function() {
-			const styleModal = document.querySelector('.style-modal-container')
-			openModal(styleModal)
-			generateQuiz(1)
 
-    	})
+  }
 
-  	}
 
-  	function openModal(element) {
-    	element.classList.add('isOpen')
-  	}
+  function validateValues(value, field = {}) {
+    console.log('validate1: ', value, '\nfield: ', field)
+    if (isNaN(value) && (field.type === 'phone' || field.type === 'number')) {
+      return 'Value not entered or invalid format'
+    } else if (field.type === 'number' && value < 1) {
+      return 'Value can not be negative or zero'
+    } else if (typeof value === 'string' && value === '') {
+      return 'Kindly fill all the details'
+    } else if (Array.isArray(value) && value.length === 0) {
+      return 'Kindly fill all the details'
+    } else if (typeof value === 'object' && value.constructor === Object && Object.keys(value).length === 0) {
+      return 'Kindly fill all the details'
+    } else if (field.type === 'phone' && (value < 6000000000 || value > 9999999999)) {
+      return 'Invalid phone number'
+    } else {
+      return ''
+    }
+  }
 
-  	function closeModal(element) {
-  		element.classList.remove('isOpen')
-  	}
+  function closeForm(selector) {
+    const element = document.querySelector(selector)
+    element.classList.add('close')
+  }
 
-	function generateQuiz(current, next='', prev='') {
-		const styleContent = document.createElement('div')
-		styleContent.setAttribute('class', 'style-content')
-		stylesQuizOptions[current].forEach(function(option, index) {
-			
-			const image = createImage(option.image)
-			const descriptionTag = createDescription(option.description)
-			const optiondiv = createOptionDiv(image, descriptionTag, current, index)
-			styleContent.appendChild(optiondiv)
-		})
-		const nextButton = createNextButton(parseInt(current) + 1)
-		const footer = createFooter()
-		footer.appendChild(nextButton)
-		styleContent.appendChild(footer)
-		const styleModalContainer = document.querySelector('.style-modal-container')
-		styleModalContainer.appendChild(styleContent)
-	}
-	
-	function createOptionDiv(image, descriptionTag, current, index) {
-		const optiondiv = document.createElement('div')
-        optiondiv.appendChild(image)
-        optiondiv.appendChild(descriptionTag)
-		optiondiv.setAttribute('class', 'style-options')
-        optiondiv.addEventListener('click', function() {
-            store.dispatch(window.addChoiceAction({[current]: (index + 1 + '')}))
-			removeSelectClass()
-			optiondiv.classList.add('style-option-selected')
-        })
-		const state = store.getState()
-		const choices = state.styleQuiz.choices
-		console.log('index: ', index)
-		console.log('choices: ', choices)
-		if(choices[current] == (index + 1)) {
-			optiondiv.classList.add('style-option-selected')
-		}
-		return optiondiv
-	}
-	
-	function removeSelectClass() {
-		const optionsDiv = document.querySelectorAll('.style-options')
-		optionsDiv.forEach(function(option) {
-			option.classList.remove('style-option-selected')
-		})
-	}
+  function openForm(selector) {
+    const element = document.querySelector(selector)
+    element.classList.remove('close')
+  }
 
-	function createNextButton(nextPage) {
-		const buttonTag = document.createElement('button')
+  function bodyTypeFormSubmit(e) {
+    e.preventDefault()
+    clearFormErrors()
+    const form = document.querySelector('#body-type')
+    const data = new FormData(form)
+    let value = {}
+    for (const entry of data) {
+      value[entry[0]] = entry[1]
+    }
+    const error = validateValues(value)
+    if (error === '') {
+      result = Object.assign({}, result, value)
+      openForm('#work-wear-style')
+      closeForm('#body-type')
+    } else {
+      setFormErrors(error)
+    }
+  }
 
-		buttonTag.innerText = 'next'
-		buttonTag.setAttribute('class', 'style-next-btn')
-		const prevState = store.getState()
-		const prevChoices = prevState.styleQuiz.choices
-		if(!prevChoices[nextPage - 1]) {
-			buttonTag.setAttribute('disabled', true)
-		}
-		buttonTag.addEventListener('click', function() {
-			
-			const state = store.getState()
-			const choices = state.styleQuiz.choices
-			if (Object.keys(stylesQuizOptions).length !== Object.keys(choices).length || Object.keys(stylesQuizOptions).length >= nextPage) {
-				generateQuiz(nextPage)
-				const styleContent = document.querySelector('.style-content')
-				styleContent.remove()
-				store.dispatch(window.setCurrentPageAction({currentPage: nextPage}))
-			} else {
-				const styleContent = document.querySelector('.style-content')
-				styleContent.remove()
-				const styleModal = document.querySelector('.style-modal-container')
-				closeModal(styleModal)
-				store.dispatch(window.setCurrentPageAction({currentPage: 1}))
-			}
-			
-		})
+  let inspirationObj = {}
+  let brandObj = {}
 
-		return buttonTag
-	}
+  function workWearStyleFormSubmit(e) {
+    e.preventDefault()
+    clearFormErrors()
+    const form = document.querySelector('#work-wear-style')
+    const data = new FormData(form)
+    let value = {}
+    for (const entry of data) {
+      value[entry[0]] = entry[1]
+    }
+    const error = validateValues(value)
+    if (error === '') {
+      result = Object.assign({}, result, value)
+      openForm('#more-info')
+      
+      const inputInspirations = document.querySelectorAll('input[name="inspiration"]')
+      inputInspirations.forEach(function(inputInspiration) {
+        inputInspiration.onchange = function() {
+          if (inputInspiration.type === 'checkbox') {
+            if (inputInspiration.checked) {
+              inspirationObj[inputInspiration.value] = inputInspiration.value
+            } else {
+              delete inspirationObj[inputInspiration.value]
+            }
+          } else {
+            inspirationObj['other'] = inputInspiration.value
+          }
+        }
+      })
 
-	function createFooter() {
-		const div = document.createElement('div')
-		div.classList.add('style-quiz-footer')
-		return div
-	}
+      
+      const inputBrands = document.querySelectorAll('input[name="brand"]')
+      inputBrands.forEach(function(inputBrand) {
+        inputBrand.onchange = function() {
+          if (inputBrand.type === 'checkbox') {
+            if (inputBrand.checked) {
+              brandObj[inputBrand.value] = inputBrand.value
+            } else {
+              delete brandObj[inputBrand.value]
+            }
+          } else {
+            brandObj['other'] = inputBrand.value
+          }
+        }
+      })
+      closeForm('#work-wear-style')
+    } else {
+      setFormErrors(error)
+    }
+  }
 
-	function createImage(src) {
-		const imgTag = document.createElement('img')
-		imgTag.setAttribute('src', src)
-		imgTag.setAttribute('class', 'style-quiz-img')
-		return imgTag
-	}
+  function moreInfoFormSubmit(e) {
+    e.preventDefault()
+    clearFormErrors()
 
-	function createDescription(description) {
-		const ptag = document.createElement('p')
-		ptag.innerText = description
-		return ptag
-	}
-})()
-</script>
+    const form = document.querySelector('#more-info')
+    const data = new FormData(form)
+
+    let value = {}
+    for (const entry of data) {
+      if (entry && (entry[0] === 'now' || entry[0] === 'size')) {
+        value[entry[0]] = entry[1]
+      }
+    }
+    if (Object.values(brandObj).length > 0) {
+      value['brand'] = Object.values(brandObj)
+    }
+
+    if (Object.values(inspirationObj).length > 0) {
+      value['inspiration'] = Object.values(inspirationObj)
+    }
+
+    const error = validateValues(value)
+    if (error === '') {
+      result = Object.assign({}, result, value)
+      closeForm('#more-info')
+      popUpClose()
+    } else {
+      setFormErrors(error)
+    }
+
+    console.log('final: ', result)
+
+  }
+{% endjavascript %}

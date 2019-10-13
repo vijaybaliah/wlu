@@ -2,7 +2,6 @@
   Reduce below value if you need the back to the top button to appear higher up on the page. 
   That value is in pixels.
 {% endcomment %}
-{% assign vertical_offset_for_trigger = 100 %}
 {% comment %} 
   Vertical offset from bottom of browser for the position of the button.
 {% endcomment %}
@@ -11,7 +10,7 @@
    <i class="fa fa-angle-double-up fa-3x"></i> 
 </a>
 {{ '//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css' | stylesheet_tag }}
-<style>
+{% style %}
 .back-to-top {
   position: fixed;
   bottom: {{ position_from_bottom }};
@@ -43,12 +42,12 @@
   text-decoration: none;
   color: #555;
 }
-</style>
+{% endstyle %}
 <script type="text/javascript">
 (function() {
   document.addEventListener('DOMContentLoaded', loadBackToTop)
   function loadBackToTop() {
-    var offset = {{ vertical_offset_for_trigger }};
+    var offset = 100;
     var duration = 500;
     var backToTop = document.querySelector('.back-to-top')
     window.onscroll = function(e) {
