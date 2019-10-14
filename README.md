@@ -9,11 +9,14 @@ brew tap shopify/shopify
 brew install themekit
 ```
 
-* Now clone this repo
+* Now clone this repo. 
 
 ```
 cd wlu
 ```
+
+#### Note
+always create your feature branch on top of `release` branch
 
 * Copy paste your config.yml into your local folder and run the following command.
 
@@ -28,7 +31,7 @@ theme open --env=development
 
 ## Deployment Steps
 
-After pushing your changes to git, run the below command
+After pushing your changes to git `release` branch and run the below command
 
 ```
 theme deploy --env=production
