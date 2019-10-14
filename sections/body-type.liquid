@@ -217,16 +217,16 @@
       	const bodyTypeContainer = document.querySelector('.body-type-container')
         bodyTypeContainer.classList.toggle('close')
         form.classList.remove('close')
-        clearResult()
       })
       form.addEventListener('submit', calcBodySizeSubmit)
       const btcClose = document.querySelector('.btc-close')
       btcClose.addEventListener('click', closePopup)
     }
 	function closePopup() {
-      	console.log('close called')
+    console.log('close called')
 		const bodyTypeContainer = document.querySelector('.body-type-container')
-        bodyTypeContainer.classList.toggle('close')
+    bodyTypeContainer.classList.toggle('close')
+    clearResult()
 	}
     function calcBodySizeSubmit(e) {
       e.preventDefault()
@@ -266,35 +266,37 @@
 
       if ((bust - hips) <= 1 && (hips - bust) < 3.6 && (bust - waist) >= 9 || (hips - waist) >= 10) {
         printResult('hourglass')
-      }
-      if ((hips - bust) >= 3.6 && (hips - bust) < 10 && (hips - waist) >= 9 && (highHip < 1.193 || waist < 1.193)) {
+      } else if ((hips - bust) >= 3.6 && (hips - bust) < 10 && (hips - waist) >= 9 && (highHip < 1.193 || waist < 1.193)) {
         printResult('hourglass')
-      }
-      if ((bust - hips) > 1 && (bust - hips) < 10 && (bust - waist) >= 9) {
+      } else if ((bust - hips) > 1 && (bust - hips) < 10 && (bust - waist) >= 9) {
         printResult('hourglass')
-      }
-      if ((hips - bust) > 2 && (hips - waist) >= 7 && (highHip >= 1.193 || waist >= 1.193)) {
+      } else if ((hips - bust) > 2 && (hips - waist) >= 7 && (highHip >= 1.193 || waist >= 1.193)) {
         printResult('oval')
-      }
-      if((hips - bust) >= 3.6 && (hips - waist) < 9) {
+      } else if((hips - bust) >= 3.6 && (hips - waist) < 9) {
         printResult('pear')
-      }
-      if ((bust - hips) >= 3.6 && (bust - waist) < 9) {
+      } else if ((bust - hips) >= 3.6 && (bust - waist) < 9) {
         printResult('heart')
-      }
-      if ((hips - bust) < 3.6 && (bust - hips) < 3.6 && (bust - waist) < 9 && (hips - waist) < 10) {
+      } else if ((hips - bust) < 3.6 && (bust - hips) < 3.6 && (bust - waist) < 9 && (hips - waist) < 10) {
         printResult('straight')
       }
     }
     function clearResult() {
+      console.log('clear result')
       const element = document.querySelector('.bs-result')
       element.classList.add('close')
-      const img = element.children[1]
-      const p = element.children[2]
-      element.removeChild(img)
-      element.removeChild(p)
+      const children = element.children
+      if (children) {
+        for(let i=0; i < children.length; i++) {
+          const childElement = children[i]
+          if (childElement.tagName !== 'DIV') {
+            element.removeChild(childElement)
+            console.log('clear result2')
+          }
+        }
+      }
     }
     function printResult(result) {
+      clearResult()
       const form = document.querySelector('.body-shape-form')
       form.classList.add('close')
       const element = document.querySelector('.bs-result')
