@@ -249,17 +249,17 @@
           </div>
           <div class="sq-personal-fields fields">
             <label for="sq-age">Age</label>
-            <input id="sq-age" name="age" type="number" required />
+            <input id="sq-age" name="age" type="number" />
           </div>
         </div>
         <div class="sq-flex sq-between">
           <div class="sq-personal-fields fields">
             <label for="sq-height">Height (ft)</label>
-            <input id="sq-height" name="height" type="number" required />
+            <input id="sq-height" name="height" type="text" required />
           </div>
           <div class="sq-personal-fields fields">
             <label for="sq-contact">Contact</label>
-            <input id="sq-contact" name="contact" type="text" required />
+            <input id="sq-contact" name="contact" type="text" />
           </div>
         </div>
         <div class="sq-flex sq-between">
@@ -269,23 +269,14 @@
           </div>
           <div class="sq-personal-fields fields">
             <label for="sq-city">City</label>
-            <input id="sq-city" name="city" type="text" required />
-          </div>
-        </div>
-        <div class="sq-flex sq-between">
-          <div class="sq-personal-fields fields">
-            <label for="sq-office-address">Office Address</label>
-            <input id="sq-office-address" name="officeAddress" type="text" required />
-          </div>
-          <div class="sq-personal-fields fields">
-            <label for="sq-designation">Designation</label>
-            <input id="sq-designation" name="designation" type="text" required />
+            <input id="sq-city" name="city" type="text" />
           </div>
         </div>
         <div class="sq-submit">
           <button type=submit>Next</button>
         </div>
       </form>
+
       <form id="body-type">
         <h3 class="sq-form-title">{{ section.settings.form_body_type_title }}</h3>
         <div class="sq-flex sq-between">
@@ -628,7 +619,8 @@
       {
         id: 'sq-name',
         type: 'text',
-        name: 'name'
+        name: 'name',
+        isRequired: true
       },
       {
         id: 'sq-age',
@@ -638,7 +630,8 @@
       {
         id: 'sq-height',
         type: 'number',
-        name: 'height'
+        name: 'height',
+        isRequired: true
       },
       {
         id: 'sq-contact',
@@ -648,22 +641,13 @@
       {
         id: 'sq-email',
         type: 'email',
-        name: 'email'
+        name: 'email',
+        isRequired: true
       },
       {
         id: 'sq-city',
         type: 'text',
         name: 'city'
-      },
-      {
-        id: 'sq-office-address',
-        type: 'text',
-        name: 'officeAddress'
-      },
-      {
-        id: 'sq-designation',
-        type: 'text',
-        name: 'designation'
       }
     ]
 
@@ -676,8 +660,11 @@
         value = inputField.value
       }
       
-      const error = validateValues(value, field)
-
+      let error = ''
+      if (field.isRequired) {
+        error = validateValues(value, field)
+      }
+      
       if (error === '') {
         result[field.name] = value
         if (Object.keys(result).length === fields.length) {
