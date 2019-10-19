@@ -805,12 +805,57 @@
     if (error === '') {
       result = Object.assign({}, result, value)
       closeForm('#more-info')
-      popUpClose()
+      // popUpClose()
     } else {
       setFormErrors(error)
     }
 
     console.log('final: ', result)
+
+    if (window.fetch) {
+      const url = 'https://us20.api.mailchimp.com/3.0/lists/8f05bd19fb/members'
+      const data = {
+        email_address: result.email,
+        status: 'subscribed',
+        merge_fields: {
+          FNAME: result.name,
+          BCASUAL: result.businessCasual,
+          BOARDROOM: result.boardroom,
+          BODYTYPE: result.bodyType,
+          CASUAL: result.casual,
+          PHONE: result.contact,
+          FUSION: result.fusion,
+          HEIGHT: result.height,
+          NOW: result.now,
+          SIZE: result.size
+        }
+      }
+      if (result.brand) {
+        data.merge_fields['BRANDS'] = result.brand.toString()
+      }
+
+      if (result.inspiration) {
+        data.merge_fields['INSPIRATIO'] = result.inspiration.toString()
+      }
+      fetch(url, {
+        method: 'POST',
+        mode: "no-cors",
+        headers: new Headers({
+          'Accept': 'application/json',
+          "Content-Type": "application/json",
+          "Authorization": "apikey 279ff2ced1285ca9e882b694d36cccd2-us20",
+          'Host': 'us20.api.mailchimp.com'
+        }),
+        body: JSON.stringify(data)
+      }).then(function(response) {
+        popUpClose()
+      })
+      .catch(function() {
+        popUpClose()
+      })
+    } else {
+      popUpClose()
+    }
 
   }
 {% endjavascript %}
