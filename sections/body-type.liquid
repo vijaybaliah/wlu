@@ -56,9 +56,7 @@
 }
 
 .secondary-button {
-    border: 1px solid;
     font-size: 16px;
-    text-transform: uppercase;
     padding: 0.25em 1em;
 }
 
@@ -142,8 +140,7 @@
 {% if section.settings.bodyTypeCalculator != blank %}
 
   <div class="bodyTypeCalculator">
-  	{{ section.settings.bodyTypeCalculator }}
-    <button class="find-body-type secondary-button">Calculator</button>
+    <button class="find-body-type secondary-button"><h3>{{ section.settings.bodyTypeCalculator }}</h3></button>
   </div>
   <div class="close result-attr"
     data-hourglass="{{ section.settings.btc_image_hourglass }}"
